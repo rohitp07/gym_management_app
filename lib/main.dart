@@ -50,7 +50,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
 class SecondScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
