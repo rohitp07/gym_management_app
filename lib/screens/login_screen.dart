@@ -1,29 +1,21 @@
+import 'package:gymkhana_app/splash_screen.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
+
+class LoginScreen extends StatefulWidget {
+@override
+State<StatefulWidget> createState() => StartState();
 }
 
-class MyApp extends StatelessWidget {
+class StartState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LoginDemo(),
-    );
+    return initWidget();
   }
-}
 
-class LoginDemo extends StatefulWidget {
-  @override
-  _LoginDemoState createState() => _LoginDemoState();
-}
-
-class _LoginDemoState extends State<LoginDemo> {
-  @override
-  Widget build(BuildContext context) {
+  initWidget() {
     return Scaffold(
-      backgroundColor: Colors.purple[800],
+      backgroundColor: Color(0xFF63447E),
 
       body: SingleChildScrollView(
         child: Column(
@@ -38,8 +30,12 @@ class _LoginDemoState extends State<LoginDemo> {
               ),
             ),
             Text('Welcome Back!',
+
               style: TextStyle(
-                fontSize: 20.0,
+                fontSize: 28.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFFFFEFB7),
+
               ),),
             SizedBox(height: 20),
             Padding(
@@ -50,6 +46,12 @@ class _LoginDemoState extends State<LoginDemo> {
                     prefixIcon: Icon(Icons.man),
                     border: OutlineInputBorder(),
                     labelText: 'User type',
+                    filled: true,
+                    //<-- SEE HERE
+                    fillColor: Color(0xFF62417E),
+                    labelStyle: TextStyle(
+                      color: Color(0xFFC4C4C4), //<-- SEE HERE
+                    ),
                     hintText: 'Enter valid email id as abc@gmail.com'),
               ),
             ),
@@ -64,7 +66,17 @@ class _LoginDemoState extends State<LoginDemo> {
                     prefixIcon: Icon(Icons.call),
                     border: OutlineInputBorder(),
                     labelText: 'Mobile Number',
-                    hintText: 'Enter 10 digits'),
+                    filled: true,
+                    //<-- SEE HERE
+                    fillColor: Color(0xFF62417E),
+                    labelStyle: TextStyle(
+                      color: Color(0xFFC4C4C4), //<-- SEE HERE
+                    ),
+                    hintText: 'Enter 10 digits',
+                    hintStyle: TextStyle(
+                      color:Color(0xFFC4C4C4),
+                    ),
+                    ),
               ),
             ),
             Padding(
@@ -78,25 +90,39 @@ class _LoginDemoState extends State<LoginDemo> {
                     prefixIcon: Icon(Icons.lock),
                     border: OutlineInputBorder(),
                     labelText: 'Password',
-                    hintText: 'Enter secure password'),
+                    filled: true,
+                    //<-- SEE HERE
+                    fillColor: Color(0xFF62417E),
+                    labelStyle: TextStyle(
+                      color: Color(0xFFC4C4C4), //<-- SEE HERE
+                    ),
+                    hintText: 'Enter your password',
+                    hintStyle: TextStyle(
+                      color:Color(0xFFC4C4C4),
+                    ),
+                    ),
               ),
             ),
             SizedBox(height: 20),
             Container(
-              height: 50,
-              width: 250,
+              height: 45,
+              width: 312,
               decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
-              child: ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  'Login',
-                  style: TextStyle(color: Colors.white, fontSize: 25),
-                ),
-              ),
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(1000)),
+              child:
+              ElevatedButton(onPressed: () {}, child: Text('Login',
+                style: TextStyle(
+                  color: Color(0xFF674882),
+                  fontSize: 18.0,
+                ),),
+                  style: ElevatedButton.styleFrom(
+                    primary: Color(0xFFF2CB41),
+
+                  )),
             ),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -105,23 +131,23 @@ class _LoginDemoState extends State<LoginDemo> {
                   onPressed: () {
                     Navigator.pushNamed(context, 'Forget password?');
                   },
-                  child: Text(
-                    'Sign Up',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                        decoration: TextDecoration.underline,
-                        color: Color(0xff4c505b),
-                        fontSize: 18),
-                  ),
+                  child: TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Forgot Password?',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
+                      )),
                   style: ButtonStyle(),
                 ),
                 TextButton(
                     onPressed: () {},
                     child: Text(
-                      'Forgot Password',
+                      'Register',
                       style: TextStyle(
-                        decoration: TextDecoration.underline,
-                        color: Color(0xff4c505b),
+                        color: Color(0xFFF2CB41),
                         fontSize: 18,
                       ),
                     )),
@@ -133,3 +159,4 @@ class _LoginDemoState extends State<LoginDemo> {
     );
   }
 }
+
