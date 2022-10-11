@@ -1,3 +1,4 @@
+import 'package:gymkhana_app/screens/forget_pass_screens/forget_pass..dart';
 import 'package:gymkhana_app/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -72,11 +73,7 @@ class StartState extends State<LoginScreen> {
                     labelStyle: TextStyle(
                       color: Color(0xFFC4C4C4), //<-- SEE HERE
                     ),
-                    hintText: 'Enter 10 digits',
-                    hintStyle: TextStyle(
-                      color:Color(0xFFC4C4C4),
-                    ),
-                    ),
+                    hintText: 'Enter 10 digits'),
               ),
             ),
             Padding(
@@ -96,11 +93,7 @@ class StartState extends State<LoginScreen> {
                     labelStyle: TextStyle(
                       color: Color(0xFFC4C4C4), //<-- SEE HERE
                     ),
-                    hintText: 'Enter your password',
-                    hintStyle: TextStyle(
-                      color:Color(0xFFC4C4C4),
-                    ),
-                    ),
+                    hintText: 'Enter secure password'),
               ),
             ),
             SizedBox(height: 20),
@@ -131,8 +124,14 @@ class StartState extends State<LoginScreen> {
                   onPressed: () {
                     Navigator.pushNamed(context, 'Forget password?');
                   },
+
                   child: TextButton(
-                      onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) =>  Forgetpassword()),
+                      );
+                    },
                       child: Text(
                         'Forgot Password?',
                         style: TextStyle(

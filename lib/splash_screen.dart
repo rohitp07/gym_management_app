@@ -1,8 +1,7 @@
 import 'dart:async';
-
-import 'package:gymkhana_app/screens/login_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:gymkhana_app/main.dart';
+import 'package:gymkhana_app/screens/login_screen.dart';
+
 
 void main() {
   runApp(SplashScreen());
@@ -22,7 +21,7 @@ class StartState extends State<SplashScreen> {
     // var duration = Duration(seconds: 3);
     // return new Timer(duration, loginRoute());
     // Timer.periodic(Duration(seconds: 3), (timer) { });
-    Future.delayed(Duration(seconds: 3)).then((value) => loginRoute());
+    Future.delayed(Duration(seconds: 5)).then((value) => loginRoute());
   }
 
   loginRoute() {
