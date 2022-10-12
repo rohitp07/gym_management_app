@@ -239,6 +239,7 @@ class StartState extends State<LoginScreen> {
                   onPressed: () {
                     Navigator.pushNamed(context, 'Forget password?');
                   },
+
                   child: TextButton(
                       onPressed: () {
                         Navigator.push(
