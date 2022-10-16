@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gymkhana_app/splash_screen.dart';
 
 
-void main() => runApp(const app());
+void main() => runApp(app());
 
 class app extends StatelessWidget {
   const app({Key? key}) : super(key: key);

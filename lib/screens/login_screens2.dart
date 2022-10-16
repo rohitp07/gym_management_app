@@ -1,18 +1,20 @@
 
 import 'package:flutter/material.dart';
-import 'package:gymkhana_app/screens/forget_pass_screens/forget_pass..dart';
-import 'package:gymkhana_app/datas/data.dart';
 
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:gymkhana_app/screens/login_screens2.dart';
-import 'package:gymkhana_app/screens/register_screens/register.dart';
-import 'package:gymkhana_app/screens/student_login_screens/student_home.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => StartState();
 }
 
+final List<String> items = [
+  'Student Member',
+  'Player Member',
+  'Coach',
+  'Game Incharge',
+  'Admin',
+];
 String? selectedValue;
 
 class StartState extends State<LoginScreen> {
@@ -71,7 +73,7 @@ class StartState extends State<LoginScreen> {
                     ),
                   ],
                 ),
-                items: item
+                items: items
                     .map((item) => DropdownMenuItem<String>(
                   value: item,
                   child: Row(
@@ -97,7 +99,7 @@ class StartState extends State<LoginScreen> {
                 ))
                     .toList(),
                 value: selectedValue,
-              selectedItemHighlightColor: Colors.yellow,
+                selectedItemHighlightColor: Colors.yellow,
                 onChanged: (value) {
                   setState(() {
                     selectedValue = value as String;
@@ -216,12 +218,7 @@ class StartState extends State<LoginScreen> {
                   color: Colors.black,
                   borderRadius: BorderRadius.circular(1000)),
               child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Student_home()),
-                    );
-                  },
+                  onPressed: () {},
                   child: Text(
                     'Login',
                     style: TextStyle(
@@ -238,30 +235,22 @@ class StartState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextButton(
-                onPressed: () {
-                  {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Forgetpassword()),
-                    );
-                  }
-                },
-        child: Text(
-          'Forget Password',
-          style: TextStyle(
-            color: Color(0xFFF2CB41),
-            fontSize: 12,
-          ),
-        )),
-
-
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'Forget password?');
+                  },
+                  child: TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Forgot Password?',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                        ),
+                      )),
+                  style: ButtonStyle(),
+                ),
                 TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => student_registration()),
-                      );
-                    },
+                    onPressed: () {},
                     child: Text(
                       'Register',
                       style: TextStyle(
