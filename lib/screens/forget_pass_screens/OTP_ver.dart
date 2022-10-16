@@ -37,13 +37,13 @@ class StartState extends State<otp_veri> {
 
               style: TextStyle(
                 letterSpacing: 1,
-                fontSize:30.0,
+                fontSize: 30.0,
                 fontWeight: FontWeight.bold,
                 color: Color(0xFFFFEFB7),
-
-
-              ),),
-            Text('Enter the 4 digit verification code\nsend on your email',
+              ),
+            ),
+            Text(
+              'Enter the 4 digit verification code\nsend on your email',
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: Colors.white

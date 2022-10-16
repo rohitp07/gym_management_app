@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:gymkhana_app/screens/forget_pass_screens/OTP_ver.dart';
 
-class resetpass extends StatefulWidget {
+class Forgetpassword extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => StartState();
 }
 
-class StartState extends State<resetpass> {
+class StartState extends State<Forgetpassword> {
   @override
   Widget build(BuildContext context) {
     return initWidget();
@@ -27,7 +28,7 @@ class StartState extends State<resetpass> {
               ),
             ),
             Text(
-              'Reset Password',
+              'Forget Password',
               style: TextStyle(
                 fontSize: 28.0,
                 fontWeight: FontWeight.bold,
@@ -36,38 +37,20 @@ class StartState extends State<resetpass> {
             ),
             Padding(
               padding: const EdgeInsets.only(
-                  left: 25.0, right: 25.0, top: 35, bottom: 25),
+                  left: 25.0, right: 25.0, top: 35, bottom: 45),
               child: TextField(
                 obscureText: true,
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.lock),
-                  border: OutlineInputBorder(),
-                  labelText: 'New Password',
-                  filled: true,
-                  //<-- SEE HERE
-                  fillColor: Color(0xFF62417E),
-                  labelStyle: TextStyle(
-                    color: Color(0xFFC4C4C4), //<-- SEE HERE
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 25.0, right: 25.0, top: 0, bottom: 45),
-              child: TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.lock),
-                  border: OutlineInputBorder(),
-                  labelText: 'Confirm Password',
-                  filled: true,
-                  //<-- SEE HERE
-                  fillColor: Color(0xFF62417E),
-                  labelStyle: TextStyle(
-                    color: Color(0xFFC4C4C4), //<-- SEE HERE
-                  ),
-                ),
+                    prefixIcon: Icon(Icons.call),
+                    border: OutlineInputBorder(),
+                    labelText: 'Mobile Number',
+                    filled: true,
+                    //<-- SEE HERE
+                    fillColor: Color(0xFF62417E),
+                    labelStyle: TextStyle(
+                      color: Color(0xFFC4C4C4), //<-- SEE HERE
+                    ),
+                    hintText: 'Enter Valid 10 digit number'),
               ),
             ),
             Container(
@@ -77,9 +60,14 @@ class StartState extends State<resetpass> {
                   color: Colors.black,
                   borderRadius: BorderRadius.circular(1000)),
               child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => otp_veri()),
+                    );
+                  },
                   child: Text(
-                    'Reset Password',
+                    'Send OTP',
                     style: TextStyle(
                       color: Color(0xFF674882),
                       fontSize: 20.0,
