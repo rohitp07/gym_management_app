@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1080250246982",
+    "project_id": "gymkhana-e2f8a",
+    "storage_bucket": "gymkhana-e2f8a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080250246982:android:ebddf591f765573c95a747",
+        "android_client_info": {
+          "package_name": "com.example.gym222"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080250246982-a99lmp4lgk1o1i6m8l4i55n421r0fukk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5tM53GKCY5vMDO7pcrOJXMJ9T3TOMK2Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080250246982-a99lmp4lgk1o1i6m8l4i55n421r0fukk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
