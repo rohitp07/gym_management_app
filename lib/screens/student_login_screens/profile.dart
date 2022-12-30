@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../other_details.dart';
@@ -18,6 +20,61 @@ class PersonalDetails extends StatefulWidget {
 String? selectedValue;
 
 class StartState extends State<PersonalDetails> {
+  final User? user = FirebaseAuth.instance.currentUser;
+
+  var userName;
+  var email;
+  var phone;
+  List subjectData = [];
+
+  readData() async {
+    var collection = FirebaseFirestore.instance.collection('userdata');
+    print(
+        'DATA PROFILE: ${user?.phoneNumber.toString().replaceFirst('+91', '')}');
+    var docSnapshot = await collection
+        .doc(user?.phoneNumber.toString().replaceFirst('+91', ''))
+        .get();
+    if (docSnapshot.exists) {
+      Map<String, dynamic>? data = docSnapshot.data();
+      setState(() {
+        userName = data?['name'];
+        email = data?['email'];
+        subjectData = data?['selectedsports'];
+      });
+      buildSportsList();
+      // <-- The value you want to retrieve.
+      // print('DATA PROFILE: ${user?.phoneNumber}');
+    }
+  }
+
+  List<Widget> widgetList = [];
+
+  buildSportsList() {
+    for (int i = 0; i < subjectData.length; i++) {
+      subjectData[i];
+      print('Game ${subjectData[i]}');
+      widgetList.add(
+        CircleAvatar(
+          radius: 25,
+          backgroundColor: Colors.green,
+          child: CircleAvatar(
+            backgroundImage:
+                new AssetImage('assets/games/${subjectData[i]}.jpeg'),
+            radius: 20.0,
+          ),
+        ),
+      );
+    }
+    setState(() {
+      widgetList = widgetList;
+    });
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    readData();
+  }
   @override
   Widget build(BuildContext context) {
     return initWidget();
@@ -92,7 +149,7 @@ class StartState extends State<PersonalDetails> {
               height: 25,
             ),
             Text(
-              'Varun Patil',
+              '$userName',
               style: TextStyle(
                 fontSize: 28.0,
                 fontWeight: FontWeight.bold,
