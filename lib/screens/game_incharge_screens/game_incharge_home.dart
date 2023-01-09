@@ -1,17 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:gym222/screens/student_login_screens/profile.dart';
+import 'package:gym222/screens/game_incharge_screens/game_incharge_profile.dart';
 
 import '../login_screen.dart';
 
-class Student_home extends StatefulWidget {
+class GameIncharge_home extends StatefulWidget {
+  String phone;
+  GameIncharge_home(this.phone);
   @override
   State<StatefulWidget> createState() => StartState();
 }
 
-class StartState extends State<Student_home> {
+class StartState extends State<GameIncharge_home> {
   final User? user = FirebaseAuth.instance.currentUser;
 
   var userName;
@@ -21,7 +22,7 @@ class StartState extends State<Student_home> {
 
   readData() async {
     // var collection = FirebaseFirestore.instance.doc('userdata/');
-    var collection = FirebaseFirestore.instance.collection('userdata');
+    var collection = FirebaseFirestore.instance.collection('Game Incharge');
     print(
         'DATA PROFILE: ${user?.phoneNumber.toString().replaceFirst('+91', '')}');
     var docSnapshot = await collection
@@ -31,6 +32,7 @@ class StartState extends State<Student_home> {
       Map<String, dynamic>? data = docSnapshot.data();
       setState(() {
         userName = data?['name'];
+        phone = data?['phone'];
         email = data?['email'];
         subjectData = data?['selectedsports'];
       });
@@ -41,7 +43,6 @@ class StartState extends State<Student_home> {
   }
 
   List<Widget> widgetList = [];
-
   buildSportsList() {
     for (int i = 0; i < subjectData.length; i++) {
       subjectData[i];
@@ -119,7 +120,7 @@ class StartState extends State<Student_home> {
                               ),
                               new Container(
                                 margin: EdgeInsets.only(top: 3.0, bottom: 0),
-                                child: Text("Good Morning !",
+                                child: Text("Good Morning!",
                                     style: TextStyle(
                                         color: Colors.white70,
                                         fontSize: 19.0,
@@ -235,7 +236,8 @@ class StartState extends State<Student_home> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => PersonalDetails()),
+                                      builder: (context) =>
+                                          GameInchargePersonalDetails(phone)),
                                 );
                               },
                               child: Padding(

@@ -4,7 +4,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:gym222/screens/register_screens/otp.dart';
 import 'package:gym222/screens/register_screens/register.dart';
 import 'package:gym222/screens/reusable_widgets/reusable_textfield.dart';
-import 'package:gym222/screens/student_login_screens/student_home.dart';
+import 'package:gym222/screens/student_screens/student_home.dart';
 import '../datas/data.dart';
 import 'forget_pass_screens/forget_pass.dart';
 import 'otp2.dart';
@@ -142,12 +142,7 @@ class StartState extends State<LoginScreen> {
                 scrollbarAlwaysShow: true,
                 offset: const Offset(-20, 0),
               ),
-
             ),
-
-
-
-
             SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.only(
@@ -212,7 +207,7 @@ class StartState extends State<LoginScreen> {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => OTPScreen1(_controller.text)));
+                      builder: (context) => OTPScreen1(_controller.text,selectedValue!)));
                 },
                 child: Text(
                   'Next',
