@@ -1,34 +1,30 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_titled_container/flutter_titled_container.dart';
+import 'package:gym222/screens/coach_screens/coach_other_details.dart';
 
-import 'other_details.dart';
-
-// import 'package:gymkhana_app/screens/forget_pass_screens/forget_pass..dart';
-// import 'package:gymkhana_app/datas/data.dart';
-//
-// import 'package:dropdown_button2/dropdown_button2.dart';
-// import 'package:gymkhana_app/screens/login_screens2.dart';
-// import 'package:gymkhana_app/screens/register_screens/register.dart';
-// import 'package:gymkhana_app/screens/student_login_screens/student_home.dart';
-
-class OtherDetails extends StatefulWidget {
+class CoachPersonalDetails extends StatefulWidget {
+  String phone;
+  CoachPersonalDetails(this.phone);
   @override
   State<StatefulWidget> createState() => StartState();
 }
 
 String? selectedValue;
 
-class StartState extends State<OtherDetails> {
+class StartState extends State<CoachPersonalDetails> {
   final User? user = FirebaseAuth.instance.currentUser;
 
   var userName;
+  var address1;
+  var dob;
   var email;
   var phone;
   List subjectData = [];
 
   readData() async {
-    var collection = FirebaseFirestore.instance.collection('userdata');
+    var collection = FirebaseFirestore.instance.collection('Coach');
     print(
         'DATA PROFILE: ${user?.phoneNumber.toString().replaceFirst('+91', '')}');
     var docSnapshot = await collection
@@ -38,14 +34,39 @@ class StartState extends State<OtherDetails> {
       Map<String, dynamic>? data = docSnapshot.data();
       setState(() {
         userName = data?['name'];
+        address1 = data?['Address'];
+        dob = data?['Date of Birth'];
         email = data?['email'];
+        phone = data?['phone'];
         subjectData = data?['selectedsports'];
       });
+      buildSportsList();
       // <-- The value you want to retrieve.
       // print('DATA PROFILE: ${user?.phoneNumber}');
     }
   }
 
+  List<Widget> widgetList = [];
+  buildSportsList() {
+    for (int i = 0; i < subjectData.length; i++) {
+      subjectData[i];
+      print('Game ${subjectData[i]}');
+      widgetList.add(
+        CircleAvatar(
+          radius: 25,
+          backgroundColor: Colors.green,
+          child: CircleAvatar(
+            backgroundImage:
+                new AssetImage('assets/games/${subjectData[i]}.jpeg'),
+            radius: 20.0,
+          ),
+        ),
+      );
+    }
+    setState(() {
+      widgetList = widgetList;
+    });
+  }
   @override
   void initState() {
     // TODO: implement initState
@@ -57,10 +78,29 @@ class StartState extends State<OtherDetails> {
     return initWidget();
   }
 
+  TextEditingController name = TextEditingController();
+  TextEditingController emailid = TextEditingController();
+  TextEditingController phoneNo = TextEditingController();
+  TextEditingController address = TextEditingController();
+  TextEditingController dateOfBirth = TextEditingController();
+  TextEditingController selectedSports = TextEditingController();
+
+  Future addCoachPersonalDetails() async {
+    final docUser = FirebaseFirestore.instance
+        .collection('Coach')
+        .doc(widget.phone.trim());
+
+    final json = {
+      'Address': address.text,
+      'Date of Birth': dateOfBirth.text,
+    };
+    await docUser.set(json, SetOptions(merge: true));
+  }
   initWidget() {
     return Scaffold(
       backgroundColor: Color(0xFF63447E),
-      body: SingleChildScrollView(
+      body: address1 != null || dob != null
+          ? SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 15.0, right: 15.0),
           child: Column(children: <Widget>[
@@ -87,32 +127,6 @@ class StartState extends State<OtherDetails> {
               ],
             ),
             SizedBox(height: 25),
-            // Padding(
-            //     padding: const EdgeInsets.only(top: 30.0),
-            //     child: Center(
-            //       child: Container(
-            //         width: 150,
-            //         height: 150,
-            // child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.start,
-            // child: Container(
-            //   width: 250,
-            //   height: 250,
-            //   child: CircleAvatar(
-            //     backgroundColor: Color(0xFFFFEFB7),
-            //     backgroundImage: AssetImage('assets/Logo.png'),
-            //     radius: 200.0,
-            // child: new CircleAvatar(
-            //   backgroundImage:
-            //       new AssetImage('assets/Logo.png'),
-            //   radius: 150.0,
-            // ),
-            //   ),
-            // )
-            //]
-            //       )
-            //      )
-            // ]),
             Padding(
               padding: const EdgeInsets.only(top: 30.0),
               child: Center(
@@ -134,42 +148,6 @@ class StartState extends State<OtherDetails> {
               ),
             ),
             SizedBox(height: 25),
-
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.start,
-            //   children: [
-            //     Icon(
-            //       Icons.person_add_alt,
-            //       size: 25,
-            //       color: Color(0xFFC4C4C4),
-            //     ),
-            //     Text(
-            //       'Personal Details',
-            //       style: TextStyle(
-            //         fontSize: 10.0,
-            //         fontWeight: FontWeight.bold,
-            //         color: Color(0xFFFFEFB7),
-            //       ),
-            //     ),
-            //     SizedBox(
-            //       width: 15,
-            //     ),
-            //     Icon(
-            //       Icons.more_horiz,
-            //       size: 25,
-            //       color: Color(0xFFC4C4C4),
-            //     ),
-            //     Text(
-            //       'Other Details',
-            //       style: TextStyle(
-            //         fontSize: 10.0,
-            //         fontWeight: FontWeight.bold,
-            //         color: Color(0xFFFFEFB7),
-            //       ),
-            //     ),
-            //   ],
-            // ),
-
             Row(mainAxisAlignment: MainAxisAlignment.start, children: [
               Padding(
                   padding: EdgeInsets.only(left: 45, right: 5, bottom: 16),
@@ -179,8 +157,8 @@ class StartState extends State<OtherDetails> {
                       color: Color(0xFF62417E),
                       boxShadow: [
                         BoxShadow(
-                          color: Color(0xFF62417E),
-                          //spreadRadius: 1,
+                          color: Colors.white,
+                          // spreadRadius: 1,
                           blurRadius: 1.5,
                           offset: Offset(0, 1.5),
                         ),
@@ -234,8 +212,8 @@ class StartState extends State<OtherDetails> {
                       color: Color(0xFF62417E),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.white,
-                          // spreadRadius: 1,
+                          color: Color(0xFF62417E),
+                          //spreadRadius: 1,
                           blurRadius: 1.5,
                           offset: Offset(0, 1.5),
                         ),
@@ -265,7 +243,7 @@ class StartState extends State<OtherDetails> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => OtherDetails()));
+                                    builder: (context) => CoachOtherDetails(phone)));
                           },
                           child: Container(
                             decoration: const BoxDecoration(
@@ -288,12 +266,10 @@ class StartState extends State<OtherDetails> {
                     ),
                   )),
             ]),
-
             Padding(
               padding: const EdgeInsets.only(
                   left: 15.0, right: 15.0, top: 15, bottom: 0),
               //padding: EdgeInsets.symmetric(horizontal: 15),
-
               child: Container(
                 // alignment: Alignment.center,
                 // margin: EdgeInsets.only(left: 4, right: 4),
@@ -304,12 +280,13 @@ class StartState extends State<OtherDetails> {
                   color: Color(0xFF62417E),
                 ),
                 child: TextField(
+                  controller: name..text = userName,
                   style: TextStyle(color: Colors.white),
                   cursorColor: Color(0xFFC4C4C4),
                   decoration: InputDecoration(
-                    // suffixIcon:
-                    //     Icon(Icons.create_outlined, color: Colors.white),
-                    labelText: 'HEIGHT:',
+                    suffixIcon:
+                        Icon(Icons.create_outlined, color: Colors.white),
+                    labelText: 'NAME',
                     //hintText: "NAME",
                     labelStyle: TextStyle(
                       fontSize: 15,
@@ -325,10 +302,10 @@ class StartState extends State<OtherDetails> {
                 ),
               ),
             ),
-            //SizedBox(height: 15),
+            SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.only(
-                  left: 15.0, right: 15.0, top: 0, bottom: 0),
+                  left: 15.0, right: 15.0, top: 15, bottom: 0),
               //padding: EdgeInsets.symmetric(horizontal: 15),
               child: Container(
                 // alignment: Alignment.center,
@@ -340,12 +317,13 @@ class StartState extends State<OtherDetails> {
                   color: Color(0xFF62417E),
                 ),
                 child: TextField(
+                  controller: address..text = address1 ?? "",
                   style: TextStyle(color: Colors.white),
                   cursorColor: Color(0xFFC4C4C4),
                   decoration: InputDecoration(
                     suffixIcon:
                         Icon(Icons.create_outlined, color: Colors.white),
-                    labelText: "WEIGHT:",
+                    labelText: "ADDRESS",
                     // hintText: "ADDRESS",
                     labelStyle: TextStyle(
                       fontSize: 15,
@@ -359,14 +337,12 @@ class StartState extends State<OtherDetails> {
                     focusedBorder: InputBorder.none,
                   ),
                 ),
-                // child: reusableTextField(
-                //     "Enter Your email", Icons.create_outlined, false),
               ),
             ),
-            //SizedBox(height: 15),
+            SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.only(
-                  left: 15.0, right: 15.0, top: 0, bottom: 0),
+                  left: 15.0, right: 15.0, top: 15, bottom: 0),
               //padding: EdgeInsets.symmetric(horizontal: 15),
               child: Container(
                 // alignment: Alignment.center,
@@ -378,12 +354,13 @@ class StartState extends State<OtherDetails> {
                   color: Color(0xFF62417E),
                 ),
                 child: TextField(
+                  controller: dateOfBirth..text = dob ?? "",
                   style: TextStyle(color: Colors.white),
                   cursorColor: Color(0xFFC4C4C4),
                   decoration: InputDecoration(
-                    // suffixIcon:
-                    //     Icon(Icons.create_outlined, color: Colors.white),
-                    labelText: "BLOOD GR:",
+                    suffixIcon:
+                        Icon(Icons.create_outlined, color: Colors.white),
+                    labelText: "DATE OF BIRTH",
                     //hintText: "DATE OF BIRTH",
                     labelStyle: TextStyle(
                       fontSize: 15,
@@ -414,49 +391,14 @@ class StartState extends State<OtherDetails> {
                   color: Color(0xFF62417E),
                 ),
                 child: TextField(
+                  controller: phoneNo..text = phone,
                   style: TextStyle(color: Colors.white),
                   cursorColor: Color(0xFFC4C4C4),
                   decoration: InputDecoration(
                     suffixIcon:
                         Icon(Icons.create_outlined, color: Colors.white),
-                    labelText: "T-SHIRT SIZE:",
-                    // hintText: "MOBILRE NUMBER",
-                    labelStyle: TextStyle(
-                      fontSize: 15,
-                      color: Color(0xFFC4C4C4),
-                    ),
-                    hintStyle: TextStyle(
-                      fontSize: 12,
-                      color: Color(0xFFC4C4C4),
-                    ),
-                    enabledBorder: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                  ),
-                ),
-              ),
-            ),
-            //SizedBox(height: 15),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 15.0, right: 15.0, top: 0, bottom: 0),
-              //padding: EdgeInsets.symmetric(horizontal: 15),
-              child: Container(
-                // alignment: Alignment.center,
-                //margin: EdgeInsets.only(left: 4, right: 4),
-                padding: EdgeInsets.only(left: 15, right: 15),
-                height: 54,
-                decoration: BoxDecoration(
-                  // borderRadius: BorderRadius.circular(50),
-                  color: Color(0xFF62417E),
-                ),
-                child: TextField(
-                  style: TextStyle(color: Colors.white),
-                  cursorColor: Color(0xFFC4C4C4),
-                  decoration: InputDecoration(
-                    // suffixIcon:
-                    //     Icon(Icons.create_outlined, color: Colors.white),
-                    labelText: "SHOE SIZE:",
-                    // hintText: "PARENT MOBILE NUMBER",
+                    labelText: "MOBILE NUMBER",
+                    // hintText: "MOBILE NUMBER",
                     labelStyle: TextStyle(
                       fontSize: 15,
                       color: Color(0xFFC4C4C4),
@@ -486,13 +428,14 @@ class StartState extends State<OtherDetails> {
                   color: Color(0xFF62417E),
                 ),
                 child: TextField(
+                  controller: emailid..text = email ?? "",
                   style: TextStyle(color: Colors.white),
                   cursorColor: Color(0xFFC4C4C4),
                   decoration: InputDecoration(
                     suffixIcon:
                         Icon(Icons.create_outlined, color: Colors.white),
-                    labelText: "MEDICAL ISSUE (IF ANY)",
-                    // hintText: "AADHAR",
+                    labelText: "EMAIL",
+                    //hintText: "EMAIL",
                     labelStyle: TextStyle(
                       fontSize: 15,
                       color: Color(0xFFC4C4C4),
@@ -507,6 +450,52 @@ class StartState extends State<OtherDetails> {
                 ),
               ),
             ),
+            SizedBox(height: 15),
+            Padding(
+                    padding: const EdgeInsets.only(
+                        left: 15.0, right: 15.0, top: 15, bottom: 0),
+                    //padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: TitledContainer(
+                      titleColor: Color(0xFFC4C4C4),
+                      title: 'SELECTED SPORTS',
+                      fontSize: 15.0,
+                      backgroundColor: Color(0xFF62417E),
+                      child: Container(
+                        padding: EdgeInsets.only(left: 15, right: 15, top: 11),
+                        height: 54,
+                        decoration: BoxDecoration(
+                          // borderRadius: BorderRadius.circular(50),
+                          color: Color(0xFF62417E),
+                        ),
+                        child: Row(
+                          children: widgetList,
+                        ),
+                      ),
+                      // alignment: Alignment.center,
+                      //margin: EdgeInsets.only(left: 4, right: 4),
+                      // child: TextField(
+                      //   // controller: selectedSports..text = subjectData,
+                      //   style: TextStyle(color: Colors.white),
+                      //   cursorColor: Color(0xFFC4C4C4),
+                      //   decoration: InputDecoration(
+                      //     suffixIcon:
+                      //         Icon(Icons.create_outlined, color: Colors.white),
+                      //     labelText: "SELECTED SPORTS",
+                      //     //hintText: "SELECTED SPORTS",
+                      //     labelStyle: TextStyle(
+                      //       fontSize: 15,
+                      //       color: Color(0xFFC4C4C4),
+                      //     ),
+                      //     hintStyle: TextStyle(
+                      //       fontSize: 12,
+                      // color: Color(0xFFC4C4C4),
+                      //     ),
+                      //     enabledBorder: InputBorder.none,
+                      //     focusedBorder: InputBorder.none,
+                      //   ),
+                      // ),
+                    ),
+                  ),
             SizedBox(
               height: 15,
             ),
@@ -517,14 +506,15 @@ class StartState extends State<OtherDetails> {
                   color: Colors.black,
                   borderRadius: BorderRadius.circular(1000)),
               child: ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
+                    await addCoachPersonalDetails();
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => OtherDetails()),
+                      MaterialPageRoute(builder: (context) => CoachOtherDetails(phone)),
                     );
                   },
                   child: Text(
-                    'Save',
+                    'Save & Next',
                     style: TextStyle(
                       color: Color(0xFF674882),
                       fontSize: 18.0,
@@ -535,10 +525,12 @@ class StartState extends State<OtherDetails> {
                     primary: Color(0xFFF2CB41),
                   )),
             ),
-            SizedBox(height: 15),
+            SizedBox(
+              height: 15,
+            ),
           ]),
         ),
-      ),
+      ): Center(child: CircularProgressIndicator()),
     );
   }
 }

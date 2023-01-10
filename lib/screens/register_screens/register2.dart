@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:gym222/screens/coach_screens/coach_home.dart';
+import 'package:gym222/screens/game_incharge_screens/game_incharge_home.dart';
 import 'package:gym222/screens/login_screen.dart';
+import 'package:gym222/screens/player_screens/player_home.dart';
+import 'package:gym222/screens/student_screens/student_home.dart';
 import 'package:multi_select_flutter/dialog/multi_select_dialog_field.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import 'multi_select/sports_data_model.dart';
 import 'package:gym222/screens/register_screens/multi_select/data_controller.dart';
 
@@ -23,12 +25,141 @@ class MultiSelectDropDownScreen extends StatefulWidget {
 }
 
 class _MultiSelectDropDownScreenState extends State<MultiSelectDropDownScreen> {
+  var address1="";
+  var dob="";
+  var aadhar="";
+  var emergencyPhone="";
+  var parentsPhone="";
+  var schoolCollege="";
+  var height="";
+  var weight="";
+  var tShirtSize="";
+  var shoeSize="";
+  var bloodGroup="";
+  var medicalIssue="";
   final AppDataController controller = Get.put(AppDataController());
   List subjectData = [];
   Future createUser() async {
+    if (widget.userType == "Student Member") {
+      try {
+        final docUser = FirebaseFirestore.instance
+            .collection(
+              widget.userType.trim(),
+            )
+            .doc(widget.phone.trim());
+        final json = {
+          'phone': widget.phone.trim(),
+          'email': widget.email.trim(),
+          'name': widget.userName.trim(),
+          'usertype': widget.userType.trim(),
+          'selectedsports': subjectData,
+          'Address': address1,
+          'Date of Birth': dob,
+          'Parents Mobile No.': parentsPhone,
+          'Aadhar No.': aadhar,
+          'school':schoolCollege,
+          'Height':height,
+          'Weight':weight,
+          'T Shirt Size':tShirtSize,
+          'Shoe Size':shoeSize,
+          'Blood Group':bloodGroup,
+          'Medical Issues':medicalIssue,
+        };
+        await docUser.set(json);
+      } catch (e) {
+        print(e);
+      }
+    };
+    if (widget.userType == "Player Member") {
+      try {
+        final docUser = FirebaseFirestore.instance
+            .collection(
+              widget.userType.trim(),
+            )
+            .doc(widget.phone.trim());
+        final json = {
+          'phone': widget.phone.trim(),
+          'email': widget.email.trim(),
+          'name': widget.userName.trim(),
+          'usertype': widget.userType.trim(),
+          'selectedsports': subjectData,
+          'Address': address1,
+          'Date of Birth': dob,
+          'Emergency Mobile No.': emergencyPhone,
+          'Aadhar No.': aadhar,
+          'school':schoolCollege,
+          'Height':height,
+          'Weight':weight,
+          'T Shirt Size':tShirtSize,
+          'Shoe Size':shoeSize,
+          'Blood Group':bloodGroup,
+          'Medical Issues':medicalIssue,
+        };
+        await docUser.set(json);
+      } catch (e) {
+        print(e);
+      }
+    };
+    if (widget.userType == "Coach") {
+      try {
+        final docUser = FirebaseFirestore.instance
+            .collection(
+              widget.userType.trim(),
+            )
+            .doc(widget.phone.trim());
+        final json = {
+          'phone': widget.phone.trim(),
+          'email': widget.email.trim(),
+          'name': widget.userName.trim(),
+          'usertype': widget.userType.trim(),
+          'selectedsports': subjectData,
+          'Address': address1,
+          'Date of Birth': dob,
+          'Height':height,
+          'Weight':weight,
+          'T Shirt Size':tShirtSize,
+          'Shoe Size':shoeSize,
+          'Blood Group':bloodGroup,
+        };
+        await docUser.set(json);
+      } catch (e) {
+        print(e);
+      }
+    };
+    if (widget.userType == "Game Incharge") {
+      try {
+        final docUser = FirebaseFirestore.instance
+            .collection(
+              widget.userType.trim(),
+            )
+            .doc(widget.phone.trim());
+        final json = {
+          'phone': widget.phone.trim(),
+          'email': widget.email.trim(),
+          'name': widget.userName.trim(),
+          'usertype': widget.userType.trim(),
+          'selectedsports': subjectData,
+          'Address': address1,
+          'Date of Birth': dob,
+          'Height':height,
+          'Weight':weight,
+          'T Shirt Size':tShirtSize,
+          'Shoe Size':shoeSize,
+          'Blood Group':bloodGroup,
+        };
+        await docUser.set(json);
+      } catch (e) {
+        print(e);
+      }
+    };
+  }
+
+  Future createUserData() async {
     try {
       final docUser = FirebaseFirestore.instance
-          .collection('userdata')
+          .collection(
+            'userdata',
+          )
           .doc(widget.phone.trim());
       final json = {
         'phone': widget.phone.trim(),
@@ -37,12 +168,6 @@ class _MultiSelectDropDownScreenState extends State<MultiSelectDropDownScreen> {
         'usertype': widget.userType.trim(),
         'selectedsports': subjectData,
       };
-      // final SharedPreferences prefs = await SharedPreferences.getInstance();
-      // prefs.setString('selectedsports', subjectData.toString());
-      // final String userId = prefs.getString('selectedsports')!;
-      // print('*****');
-      // print(userId);
-      // print('*****');
       await docUser.set(json);
     } catch (e) {
       print(e);
@@ -78,7 +203,7 @@ class _MultiSelectDropDownScreenState extends State<MultiSelectDropDownScreen> {
               child: MultiSelectDialogField(
                 items: controller.dropDownData,
                 title: const Text(
-                  "Select Subject",
+                  "Select Sports",
                   style: TextStyle(color: Colors.black),
                 ),
                 selectedColor: Colors.black,
@@ -95,7 +220,7 @@ class _MultiSelectDropDownScreenState extends State<MultiSelectDropDownScreen> {
                   color: Colors.black,
                 ),
                 buttonText: const Text(
-                  "Select Your Subject",
+                  "Select Your Sports",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 18,
@@ -128,10 +253,46 @@ class _MultiSelectDropDownScreenState extends State<MultiSelectDropDownScreen> {
             child: ElevatedButton(
                 onPressed: () async {
                   await createUser();
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()),
-                  );
+                  await createUserData();
+                  if (widget.userType == 'Student Member') {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Student_home(widget.phone)),
+                        (route) => false);
+                  }
+                  if (widget.userType == 'Player Member') {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Player_home(widget.phone)),
+                        (route) => false);
+                  }
+                  if (widget.userType == 'Coach') {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Coach_home(widget.phone)),
+                        (route) => false);
+                  }
+                  if (widget.userType == 'Game Incharge') {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                GameIncharge_home(widget.phone)),
+                        (route) => false);
+                  }
+                  if (widget.userType == 'Admin') {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                        (route) => false);
+                  }
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => LoginScreen()),
+                  // );
                 },
                 child: Text(
                   'Continue',

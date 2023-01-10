@@ -1,13 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gym222/screens/coach_screens/coach_home.dart';
+import 'package:gym222/screens/game_incharge_screens/game_incharge_home.dart';
+import 'package:gym222/screens/login_screen.dart';
+import 'package:gym222/screens/player_screens/player_home.dart';
 import 'package:gym222/screens/register_screens/register2.dart';
-import 'package:gym222/screens/student_login_screens/student_home.dart';
+import 'package:gym222/screens/student_screens/student_home.dart';
 import 'package:pinput/pinput.dart';
 
-
 class OTPScreen1 extends StatefulWidget {
-  final String phone;
-  OTPScreen1(this.phone);
+  String phone;
+  String userType;
+  OTPScreen1(this.phone, this.userType);
   @override
   _OTPScreenState createState() => _OTPScreenState();
 }
@@ -17,11 +21,13 @@ class _OTPScreenState extends State<OTPScreen1> {
   String? _verificationCode;
   final TextEditingController _pinPutController = TextEditingController();
 
-
   final defaultPinTheme = PinTheme(
     width: 56,
     height: 56,
-    textStyle: TextStyle(fontSize: 20, color: Color.fromRGBO(30, 60, 87, 1), fontWeight: FontWeight.w600),
+    textStyle: TextStyle(
+        fontSize: 20,
+        color: Color.fromRGBO(30, 60, 87, 1),
+        fontWeight: FontWeight.w600),
     decoration: BoxDecoration(
       border: Border.all(color: Colors.black),
       borderRadius: BorderRadius.circular(20),
@@ -29,13 +35,13 @@ class _OTPScreenState extends State<OTPScreen1> {
   );
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Color(0xFF63447E),
       key: _scaffoldkey,
       appBar: AppBar(
         backgroundColor: Color(0xFF62417E),
-        title: Text('OTP Verification',
+        title: Text(
+          'OTP Verification',
           style: TextStyle(
             color: const Color(0xFFFFEFB7),
           ),
@@ -48,11 +54,13 @@ class _OTPScreenState extends State<OTPScreen1> {
             child: Center(
               child: Text(
                 'Verify +91 ${widget.phone}',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26,color: const Color(0xFFFFEFB7)),
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 26,
+                    color: const Color(0xFFFFEFB7)),
               ),
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.all(30.0),
             child: Pinput(
@@ -64,18 +72,49 @@ class _OTPScreenState extends State<OTPScreen1> {
                 try {
                   await FirebaseAuth.instance
                       .signInWithCredential(PhoneAuthProvider.credential(
-                      verificationId: _verificationCode!, smsCode: pin))
+                          verificationId: _verificationCode!, smsCode: pin))
                       .then((value) async {
                     if (value.user != null) {
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(builder: (context) => Student_home()),
-                              (route) => false);
+                      if (widget.userType == "Student Member") {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Student_home(widget.phone)),
+                    (route) => false);
+              } else if (widget.userType == "Player Member") {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Player_home(widget.phone)),
+                    (route) => false);
+              } else if (widget.userType == "Coach") {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Coach_home(widget.phone)),
+                    (route) => false);
+              } else if (widget.userType == "Game Incharge") {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => GameIncharge_home(widget.phone)),
+                    (route) => false);
+              } else if (widget.userType == "Admin") {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                    (route) => false);
+              }
+                      // Navigator.pushAndRemoveUntil(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => LoginScreen()),
+                      //     (route) => false);
                     }
                   });
                 } catch (e) {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
-
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(SnackBar(content: Text(e.toString())));
                 }
               },
             ),
@@ -93,10 +132,36 @@ class _OTPScreenState extends State<OTPScreen1> {
               .signInWithCredential(credential)
               .then((value) async {
             if (value.user != null) {
-              Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => Student_home()),
-                      (route) => false);
+              if (widget.userType == "Student Member") {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Student_home(widget.phone)),
+                    (route) => false);
+              } else if (widget.userType == "Player Member") {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Player_home(widget.phone)),
+                    (route) => false);
+              } else if (widget.userType == "Coach") {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Coach_home(widget.phone)),
+                    (route) => false);
+              } else if (widget.userType == "Game Incharge") {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => GameIncharge_home(widget.phone)),
+                    (route) => false);
+              } else if (widget.userType == "Admin") {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                    (route) => false);
+              }
             }
           });
         },
