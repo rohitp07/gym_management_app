@@ -91,7 +91,7 @@ class StartState extends State<Student_home> {
                   bottom: 20,
                 ),
                 child: Container(
-                  height: 100,
+                  height: 80,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
@@ -134,7 +134,7 @@ class StartState extends State<Student_home> {
               ),
             ),
             Container(
-              height: 140,
+              height: 100,
               width: 400,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -215,12 +215,12 @@ class StartState extends State<Student_home> {
               ),
             ),
             Container(
-              height: 360,
+              height: 300,
               width: 400,
               child: Row(
                 children: <Widget>[
                   Container(
-                    height: 360,
+                    height: 300,
                     width: 200,
                     child: Column(
                       children: <Widget>[

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_titled_container/flutter_titled_container.dart';
+import 'package:gym222/screens/coach_screens/coach_home.dart';
 import 'package:gym222/screens/coach_screens/coach_other_details.dart';
 
 class CoachPersonalDetails extends StatefulWidget {
@@ -108,10 +109,20 @@ class StartState extends State<CoachPersonalDetails> {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Icon(
-                  Icons.arrow_back,
-                  size: 25,
+                IconButton(
                   color: Color(0xFFC4C4C4),
+                  iconSize: 25,
+                  icon: const Icon(
+                    Icons.arrow_back,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              Coach_home(phone)),
+                    );
+                  },
                 ),
                 SizedBox(
                   width: 15,

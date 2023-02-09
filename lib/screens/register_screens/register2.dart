@@ -178,7 +178,7 @@ class _MultiSelectDropDownScreenState extends State<MultiSelectDropDownScreen> {
   Widget build(BuildContext context) {
     // List subjectData = [];
 
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       controller.getSubjectData();
     });
 

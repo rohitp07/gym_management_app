@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_titled_container/flutter_titled_container.dart';
+import 'package:gym222/screens/player_screens/player_home.dart';
 import 'package:gym222/screens/player_screens/player_other_details.dart';
 
 class PlayerPersonalDetails extends StatefulWidget {
@@ -128,10 +129,20 @@ class StartState extends State<PlayerPersonalDetails> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Icon(
-                        Icons.arrow_back,
-                        size: 25,
+                      IconButton(
                         color: Color(0xFFC4C4C4),
+                        iconSize: 25,
+                        icon: const Icon(
+                          Icons.arrow_back,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    Player_home(phone)),
+                          );
+                        },
                       ),
                       SizedBox(
                         width: 15,

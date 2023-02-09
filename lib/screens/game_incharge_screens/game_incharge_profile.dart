@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_titled_container/flutter_titled_container.dart';
+import 'package:gym222/screens/game_incharge_screens/game_incharge_home.dart';
 import 'package:gym222/screens/game_incharge_screens/game_incharge_other_details.dart';
 
 class GameInchargePersonalDetails extends StatefulWidget {
@@ -111,10 +112,20 @@ class StartState extends State<GameInchargePersonalDetails> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Icon(
-                        Icons.arrow_back,
-                        size: 25,
+                      IconButton(
                         color: Color(0xFFC4C4C4),
+                        iconSize: 25,
+                        icon: const Icon(
+                          Icons.arrow_back,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    GameIncharge_home(phone)),
+                          );
+                        },
                       ),
                       SizedBox(
                         width: 15,

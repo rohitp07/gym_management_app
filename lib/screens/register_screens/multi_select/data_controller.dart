@@ -17,12 +17,12 @@ class AppDataController extends GetxController {
       "code": 200,
       "message": "Sports lists.",
       "data": [
-        {"sports_id": "1", "sports_name": "Football"},
-        {"sports_id": "2", "sports_name": "Basketball"},
-        {"sports_id": "3", "sports_name": "Chess"},
-        {"sports_id": "4", "sports_name": "Badminton"},
-        {"sports_id": "5", "sports_name": "Hockey"},
-        {"sports_id": "6", "sports_name": "Archery"},
+        {"sports_id": "1", "sports_name": "Badminton"},
+        {"sports_id": "2", "sports_name": "Table Tennis"},
+        {"sports_id": "3", "sports_name": "Cycling"},
+        {"sports_id": "4", "sports_name": "Tennis"},
+        {"sports_id": "5", "sports_name": "Football"},
+        {"sports_id": "6", "sports_name": "Chess"},
 
       ]
     };

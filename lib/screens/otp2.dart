@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gym222/screens/coach_screens/coach_home.dart';
-import 'package:gym222/screens/game_incharge_screens/game_incharge_home.dart';
-import 'package:gym222/screens/login_screen.dart';
 import 'package:gym222/screens/player_screens/player_home.dart';
-import 'package:gym222/screens/register_screens/register2.dart';
 import 'package:gym222/screens/student_screens/student_home.dart';
 import 'package:pinput/pinput.dart';
+import 'coach_screens/coach_home.dart';
+import 'game_incharge_screens/game_incharge_home.dart';
+import 'login_screen.dart';
 
 class OTPScreen1 extends StatefulWidget {
   String phone;

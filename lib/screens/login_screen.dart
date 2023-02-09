@@ -67,8 +67,7 @@ class StartState extends State<LoginScreen> {
                       child: Text(
                         'User Type',
                         style: TextStyle(
-                          fontSize: 14,
-                          fontStyle: FontStyle.normal,
+
                           color: Color(0xFFC4C4C4),
                         ),
                         overflow: TextOverflow.ellipsis,
@@ -92,8 +91,8 @@ class StartState extends State<LoginScreen> {
                       Text(
                         item,
                         style:  TextStyle(
-                          fontSize: 14,
-                          color: selectedValue==item? Colors.white : Colors.black,
+
+                          color: selectedValue==item?Color(0xFFC4C4C4) : Colors.black,
                         ),
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -114,8 +113,9 @@ class StartState extends State<LoginScreen> {
                 iconSize: 25,
                 iconEnabledColor: Color(0xFFC4C4C4),
                 iconDisabledColor: Color(0xFFC4C4C4),
-                buttonHeight: 65,
-                buttonWidth: 380,
+                buttonHeight: 50,
+                dropdownFullScreen : true,
+                buttonWidth: 340,
                 buttonPadding: const EdgeInsets.only(left: 15, right: 15),
                 buttonDecoration: BoxDecoration(
                   // borderRadius: BorderRadius.circular(14),
@@ -125,13 +125,13 @@ class StartState extends State<LoginScreen> {
                   color: Color(0xFF62417E),
                 ),
                 // buttonElevation: 2,
-                itemHeight: 65,
+                itemHeight: 50,
                 itemPadding: const EdgeInsets.only(
-                    left: 15, right: 15, top: 10, bottom: 0),
+                    left: 15, right: 15, top: 0, bottom: 0),
                 dropdownMaxHeight: 300,
-                dropdownWidth: 380,
+                dropdownWidth: 300,
                 dropdownPadding: const EdgeInsets.only(
-                    left: 50, right: 15, top: 0, bottom: 10),
+                    left: 10, right: 15, top: 0, bottom: 0),
                 dropdownDecoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(14),
                   color: Color(0xFFFFFFFF),
@@ -140,28 +140,9 @@ class StartState extends State<LoginScreen> {
                 scrollbarRadius: const Radius.circular(40),
                 scrollbarThickness: 6,
                 scrollbarAlwaysShow: true,
-                offset: const Offset(-20, 0),
+                offset: const Offset(25, 0),
               ),
             ),
-            SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 15.0, right: 15.0, top: 15, bottom: 0),
-              //padding: EdgeInsets.symmetric(horizontal: 15),
-              child: Container(
-                // alignment: Alignment.center,
-                margin: EdgeInsets.only(left: 4, right: 4),
-                padding: EdgeInsets.only(left: 15, right: 15),
-                height: 54,
-                decoration: BoxDecoration(
-                  // borderRadius: BorderRadius.circular(50),
-                  color: Color(0xFF62417E),
-                ),
-                child: reusableTextField("Enter Your email", Icons.mail, false, _emailTextController),
-              ),
-            ),
-
-
             SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.only(
@@ -171,7 +152,7 @@ class StartState extends State<LoginScreen> {
                 margin: EdgeInsets.only(left: 4, right: 4),
                 padding: EdgeInsets.only(left: 15, right: 15),
 
-                height: 65,
+                height: 75,
                 width: 600,
                 child: TextField(
                   cursorColor: Colors.white,
@@ -197,10 +178,10 @@ class StartState extends State<LoginScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 40),
             Container(
-              height: 44,
-              width: 312,
+              height: 50,
+              width: 340,
               decoration: BoxDecoration(
 
                   borderRadius: BorderRadius.circular(1000)),
@@ -219,24 +200,12 @@ class StartState extends State<LoginScreen> {
               ),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Forgetpassword()),
-                      );
-                    },
-                    child: Text(
-                      'Forget Password',
-                      style: TextStyle(
-                        color: Color(0xFFF2CB41),
-                        fontSize: 12,
-                      ),
-                    )),
-
-
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(child: Text("Don't have an account?", style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                ),),),
                 TextButton(
                     onPressed: () {
                       Navigator.push(
@@ -248,7 +217,7 @@ class StartState extends State<LoginScreen> {
                       'Register',
                       style: TextStyle(
                         color: Color(0xFFF2CB41),
-                        fontSize: 12,
+                        fontSize: 15,
                       ),
                     )),
               ],
