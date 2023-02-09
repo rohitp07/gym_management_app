@@ -4,11 +4,11 @@ import 'package:gym222/screens/register_screens/register2.dart';
 import 'package:pinput/pinput.dart';
 
 class OTPScreen extends StatefulWidget {
-  String email;
+
   String userName;
   String userType;
   final String phone;
-  OTPScreen(this.phone,this.email,this.userName,this.userType);
+  OTPScreen(this.phone,this.userName,this.userType);
   @override
   _OTPScreenState createState() => _OTPScreenState();
 }
@@ -76,7 +76,7 @@ class _OTPScreenState extends State<OTPScreen> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  MultiSelectDropDownScreen(widget.phone,widget.email,widget.userName,widget.userType)),
+                                  MultiSelectDropDownScreen(widget.phone,widget.userName,widget.userType)),
                           (route) => false);
                     }
                   });
@@ -103,7 +103,7 @@ class _OTPScreenState extends State<OTPScreen> {
               Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => MultiSelectDropDownScreen(widget.phone,widget.email,widget.userName,widget.userType)),
+                      builder: (context) => MultiSelectDropDownScreen(widget.phone,widget.userName,widget.userType)),
                   (route) => false);
             }
           });

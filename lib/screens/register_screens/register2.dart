@@ -11,13 +11,13 @@ import 'multi_select/sports_data_model.dart';
 import 'package:gym222/screens/register_screens/multi_select/data_controller.dart';
 
 class MultiSelectDropDownScreen extends StatefulWidget {
-  String email;
+
   String phone;
   String userName;
   String userType;
   // MultiSelectDropDownScreen({Key? key}) : super(key: key);
   MultiSelectDropDownScreen(
-      this.phone, this.email, this.userName, this.userType);
+      this.phone, this.userName, this.userType);
 
   @override
   State<MultiSelectDropDownScreen> createState() =>
@@ -27,6 +27,7 @@ class MultiSelectDropDownScreen extends StatefulWidget {
 class _MultiSelectDropDownScreenState extends State<MultiSelectDropDownScreen> {
   var address1="";
   var dob="";
+  var email = "";
   var aadhar="";
   var emergencyPhone="";
   var parentsPhone="";
@@ -49,7 +50,7 @@ class _MultiSelectDropDownScreenState extends State<MultiSelectDropDownScreen> {
             .doc(widget.phone.trim());
         final json = {
           'phone': widget.phone.trim(),
-          'email': widget.email.trim(),
+          'email': email,
           'name': widget.userName.trim(),
           'usertype': widget.userType.trim(),
           'selectedsports': subjectData,
@@ -79,7 +80,7 @@ class _MultiSelectDropDownScreenState extends State<MultiSelectDropDownScreen> {
             .doc(widget.phone.trim());
         final json = {
           'phone': widget.phone.trim(),
-          'email': widget.email.trim(),
+          'email': email,
           'name': widget.userName.trim(),
           'usertype': widget.userType.trim(),
           'selectedsports': subjectData,
@@ -109,7 +110,7 @@ class _MultiSelectDropDownScreenState extends State<MultiSelectDropDownScreen> {
             .doc(widget.phone.trim());
         final json = {
           'phone': widget.phone.trim(),
-          'email': widget.email.trim(),
+          'email': email,
           'name': widget.userName.trim(),
           'usertype': widget.userType.trim(),
           'selectedsports': subjectData,
@@ -135,7 +136,7 @@ class _MultiSelectDropDownScreenState extends State<MultiSelectDropDownScreen> {
             .doc(widget.phone.trim());
         final json = {
           'phone': widget.phone.trim(),
-          'email': widget.email.trim(),
+          'email': email,
           'name': widget.userName.trim(),
           'usertype': widget.userType.trim(),
           'selectedsports': subjectData,
@@ -163,7 +164,7 @@ class _MultiSelectDropDownScreenState extends State<MultiSelectDropDownScreen> {
           .doc(widget.phone.trim());
       final json = {
         'phone': widget.phone.trim(),
-        'email': widget.email.trim(),
+        'email': email,
         'name': widget.userName.trim(),
         'usertype': widget.userType.trim(),
         'selectedsports': subjectData,

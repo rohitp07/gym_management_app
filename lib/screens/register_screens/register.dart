@@ -26,7 +26,6 @@ String dropdown_value = "Select Member Type";
 class StartState extends State<student_registration> {
   GlobalKey<FormState> _key = new GlobalKey();
   TextEditingController _passwordTextController = TextEditingController();
-  TextEditingController _emailTextController = TextEditingController();
   TextEditingController _controller = TextEditingController();
   TextEditingController _userNameTextController = TextEditingController();
   get child => null;
@@ -76,7 +75,7 @@ class StartState extends State<student_registration> {
                         color: Color(0xFFC4C4C4),
                       ),
                       SizedBox(
-                        width: 18,
+                        width: 10,
                       ),
                       Expanded(
                         child: Text(
@@ -97,11 +96,11 @@ class StartState extends State<student_registration> {
                       children: [
                         Icon(
                           Icons.account_circle_outlined,
-                          size: 16,
+                          size: 25,
                           color: Color(0xFFC4C4C4),
                         ),
                         SizedBox(
-                          width: 18,
+                          width: 10,
                         ),
                         Text(
                           item,
@@ -193,46 +192,12 @@ class StartState extends State<student_registration> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 15.0, right: 15.0, top: 15, bottom: 0),
-                //padding: EdgeInsets.symmetric(horizontal: 15),
-                child: Container(
-                  height: 75,
-                  width: 600,
-                  // alignment: Alignment.center,
-                  margin: EdgeInsets.only(left: 4, right: 4),
-                  padding: EdgeInsets.only(left: 15, right: 15),
 
-                  child: TextField(
-                    cursorColor: Colors.white,
-                    style: TextStyle(color: Colors.white.withOpacity(0.9)),
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.email,
-                        color: Colors.white70,
-                      ),
-                      labelText: "Enter your email",
-                      labelStyle: TextStyle(color: Color(0xFFC4C4C4)),
-                      filled: true,
-
-                      floatingLabelBehavior: FloatingLabelBehavior.never,
-                      fillColor:  Color(0xFF62417E),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(0),
-                          borderSide: const BorderSide(width: 0, style: BorderStyle.none)),
-                    ),
-
-                    keyboardType: TextInputType.emailAddress,
-                    controller: _emailTextController,
-                  ),
-                ),
-              ),
 
 
               Padding(
                 padding: const EdgeInsets.only(
-                    left: 15.0, right: 15.0, top: 15, bottom: 0),
+                    left: 15.0, right: 15.0, top: 2, bottom: 0),
                 //padding: EdgeInsets.symmetric(horizontal: 15),
                 child: Container(
                   margin: EdgeInsets.only(left: 4, right: 4),
@@ -296,7 +261,6 @@ class StartState extends State<student_registration> {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => OTPScreen(
                               _controller.text,
-                              _emailTextController.text,
                               _userNameTextController.text,
                               selectedValue!)));
                     },
