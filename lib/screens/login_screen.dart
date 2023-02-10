@@ -9,7 +9,6 @@ import '../datas/data.dart';
 import 'forget_pass_screens/forget_pass.dart';
 import 'otp2.dart';
 
-
 class LoginScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => StartState();
@@ -20,7 +19,6 @@ String? selectedValue;
 class StartState extends State<LoginScreen> {
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _controller = TextEditingController();
-  TextEditingController _emailTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return initWidget();
@@ -33,14 +31,15 @@ class StartState extends State<LoginScreen> {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 30.0),
+              padding: const EdgeInsets.only(top: 45.0),
               child: Center(
                 child: Container(
-                    width: 300,
-                    height: 200,
+                    width: 320,
+                    height: 210,
                     child: Image.asset('assets/Logo.png')),
               ),
             ),
+            SizedBox(height: 5),
             Text(
               'Welcome Back!',
               style: TextStyle(
@@ -49,7 +48,7 @@ class StartState extends State<LoginScreen> {
                 color: Color(0xFFFFEFB7),
               ),
             ),
-            SizedBox(height: 25),
+            SizedBox(height: 30),
             DropdownButtonHideUnderline(
               child: DropdownButton2(
                 isExpanded: true,
@@ -67,7 +66,6 @@ class StartState extends State<LoginScreen> {
                       child: Text(
                         'User Type',
                         style: TextStyle(
-
                           color: Color(0xFFC4C4C4),
                         ),
                         overflow: TextOverflow.ellipsis,
@@ -77,28 +75,29 @@ class StartState extends State<LoginScreen> {
                 ),
                 items: item
                     .map((item) => DropdownMenuItem<String>(
-                  value: item,
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.account_circle_outlined,
-                        size: 16,
-                        color: Color(0xFFC4C4C4),
-                      ),
-                      SizedBox(
-                        width: 18,
-                      ),
-                      Text(
-                        item,
-                        style:  TextStyle(
-
-                          color: selectedValue==item?Color(0xFFC4C4C4) : Colors.black,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  ),
-                ))
+                          value: item,
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.account_circle_outlined,
+                                size: 16,
+                                color: Color(0xFFC4C4C4),
+                              ),
+                              SizedBox(
+                                width: 18,
+                              ),
+                              Text(
+                                item,
+                                style: TextStyle(
+                                  color: selectedValue == item
+                                      ? Color(0xFFC4C4C4)
+                                      : Colors.black,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          ),
+                        ))
                     .toList(),
                 value: selectedValue,
                 selectedItemHighlightColor: Colors.yellow,
@@ -114,7 +113,7 @@ class StartState extends State<LoginScreen> {
                 iconEnabledColor: Color(0xFFC4C4C4),
                 iconDisabledColor: Color(0xFFC4C4C4),
                 buttonHeight: 50,
-                dropdownFullScreen : true,
+                dropdownFullScreen: true,
                 buttonWidth: 340,
                 buttonPadding: const EdgeInsets.only(left: 15, right: 15),
                 buttonDecoration: BoxDecoration(
@@ -143,7 +142,7 @@ class StartState extends State<LoginScreen> {
                 offset: const Offset(25, 0),
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.only(
                   left: 15.0, right: 15.0, top: 15, bottom: 0),
@@ -151,7 +150,6 @@ class StartState extends State<LoginScreen> {
               child: Container(
                 margin: EdgeInsets.only(left: 4, right: 4),
                 padding: EdgeInsets.only(left: 15, right: 15),
-
                 height: 75,
                 width: 600,
                 child: TextField(
@@ -165,12 +163,12 @@ class StartState extends State<LoginScreen> {
                     labelText: "Phone Number",
                     labelStyle: TextStyle(color: Color(0xFFC4C4C4)),
                     filled: true,
-
                     floatingLabelBehavior: FloatingLabelBehavior.never,
-                    fillColor:  Color(0xFF62417E),
+                    fillColor: Color(0xFF62417E),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(0),
-                        borderSide: const BorderSide(width: 0, style: BorderStyle.none)),
+                        borderSide: const BorderSide(
+                            width: 0, style: BorderStyle.none)),
                   ),
                   maxLength: 10,
                   keyboardType: TextInputType.number,
@@ -180,37 +178,45 @@ class StartState extends State<LoginScreen> {
             ),
             SizedBox(height: 40),
             Container(
+              margin: EdgeInsets.only(left: 4, right: 4),
+              padding: EdgeInsets.only(left: 15, right: 15),
               height: 50,
-              width: 340,
-              decoration: BoxDecoration(
-
-                  borderRadius: BorderRadius.circular(1000)),
+              width: 600,
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(1000)),
               child: ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => OTPScreen1(_controller.text,selectedValue!)));
-                },
-                child: Text(
-                  'Next',
-                  style: TextStyle(color: Color(0xFF63447E), fontSize: 20),
-                ),
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            OTPScreen1(_controller.text, selectedValue!)));
+                  },
+                  child: Text(
+                    'Next',
+                    style: TextStyle(color: Color(0xFF63447E), fontSize: 20),
+                  ),
                   style: ElevatedButton.styleFrom(
                     primary: Color(0xFFF2CB41),
-                  )
-              ),
+                  )),
             ),
+            SizedBox(height: 15),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Container(child: Text("Don't have an account?", style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 15,
-                ),),),
+                Container(
+                  child: Text(
+                    "Don't have an account?",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                    ),
+                  ),
+                ),
                 TextButton(
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => student_registration()),
+                        MaterialPageRoute(
+                            builder: (context) => student_registration()),
                       );
                     },
                     child: Text(
@@ -218,6 +224,7 @@ class StartState extends State<LoginScreen> {
                       style: TextStyle(
                         color: Color(0xFFF2CB41),
                         fontSize: 15,
+                        decoration: TextDecoration.underline,
                       ),
                     )),
               ],

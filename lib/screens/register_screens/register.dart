@@ -46,14 +46,15 @@ class StartState extends State<student_registration> {
           child: Column(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(top: 20, bottom: 0),
+                padding: const EdgeInsets.only(top: 45, bottom: 0),
                 child: Center(
                   child: Container(
-                      width: 300,
-                      height: 220,
+                      width: 320,
+                      height: 210,
                       child: Image.asset('assets/Logo.png')),
                 ),
               ),
+              SizedBox(height: 5),
               Text(
                 'Registration',
                 style: TextStyle(
@@ -63,7 +64,7 @@ class StartState extends State<student_registration> {
                 ),
               ),
 
-              SizedBox(height: 15),
+              SizedBox(height: 30),
               DropdownButtonHideUnderline(
                 child: DropdownButton2(
                   isExpanded: true,
@@ -81,7 +82,6 @@ class StartState extends State<student_registration> {
                         child: Text(
                           'User Type',
                           style: TextStyle(
-
                             color: Color(0xFFC4C4C4),
                           ),
                           overflow: TextOverflow.ellipsis,
@@ -91,28 +91,29 @@ class StartState extends State<student_registration> {
                   ),
                   items: items
                       .map((item) => DropdownMenuItem<String>(
-                    value: item,
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.account_circle_outlined,
-                          size: 25,
-                          color: Color(0xFFC4C4C4),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          item,
-                          style:  TextStyle(
-
-                            color: selectedValue==item?Color(0xFFC4C4C4) : Colors.black,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
-                    ),
-                  ))
+                            value: item,
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.account_circle_outlined,
+                                  size: 25,
+                                  color: Color(0xFFC4C4C4),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  item,
+                                  style: TextStyle(
+                                    color: selectedValue == item
+                                        ? Color(0xFFC4C4C4)
+                                        : Colors.black,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ],
+                            ),
+                          ))
                       .toList(),
                   value: selectedValue,
                   selectedItemHighlightColor: Colors.yellow,
@@ -128,7 +129,7 @@ class StartState extends State<student_registration> {
                   iconEnabledColor: Color(0xFFC4C4C4),
                   iconDisabledColor: Color(0xFFC4C4C4),
                   buttonHeight: 50,
-                  dropdownFullScreen : true,
+                  dropdownFullScreen: true,
                   buttonWidth: 340,
                   buttonPadding: const EdgeInsets.only(left: 15, right: 15),
                   buttonDecoration: BoxDecoration(
@@ -157,6 +158,7 @@ class StartState extends State<student_registration> {
                   offset: const Offset(25, 0),
                 ),
               ),
+              SizedBox(height: 15),
               Padding(
                 padding: const EdgeInsets.only(
                     left: 15.0, right: 15.0, top: 15, bottom: 0),
@@ -179,22 +181,19 @@ class StartState extends State<student_registration> {
                       labelText: "Enter your Name",
                       labelStyle: TextStyle(color: Color(0xFFC4C4C4)),
                       filled: true,
-
                       floatingLabelBehavior: FloatingLabelBehavior.never,
-                      fillColor:  Color(0xFF62417E),
+                      fillColor: Color(0xFF62417E),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(0),
-                          borderSide: const BorderSide(width: 0, style: BorderStyle.none)),
+                          borderSide: const BorderSide(
+                              width: 0, style: BorderStyle.none)),
                     ),
-
                     keyboardType: TextInputType.emailAddress,
                     controller: _userNameTextController,
                   ),
                 ),
               ),
-
-
-
+              SizedBox(height: 15),
               Padding(
                 padding: const EdgeInsets.only(
                     left: 15.0, right: 15.0, top: 2, bottom: 0),
@@ -202,7 +201,6 @@ class StartState extends State<student_registration> {
                 child: Container(
                   margin: EdgeInsets.only(left: 4, right: 4),
                   padding: EdgeInsets.only(left: 15, right: 15),
-
                   height: 75,
                   width: 600,
                   child: TextField(
@@ -216,12 +214,12 @@ class StartState extends State<student_registration> {
                       labelText: "Phone Number",
                       labelStyle: TextStyle(color: Color(0xFFC4C4C4)),
                       filled: true,
-
                       floatingLabelBehavior: FloatingLabelBehavior.never,
-                      fillColor:  Color(0xFF62417E),
+                      fillColor: Color(0xFF62417E),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(0),
-                          borderSide: const BorderSide(width: 0, style: BorderStyle.none)),
+                          borderSide: const BorderSide(
+                              width: 0, style: BorderStyle.none)),
                     ),
                     maxLength: 10,
                     keyboardType: TextInputType.number,
@@ -230,8 +228,7 @@ class StartState extends State<student_registration> {
                 ),
               ),
 
-
-              SizedBox(height: 20),
+              SizedBox(height: 40),
               // Container(
               //   height: 45,
               //   width: 312,
@@ -252,17 +249,17 @@ class StartState extends State<student_registration> {
 
               // ),
               Container(
-                height: 44,
-                width: 312,
+                margin: EdgeInsets.only(left: 4, right: 4),
+                padding: EdgeInsets.only(left: 15, right: 15),
+                height: 50,
+                width: 600,
                 decoration:
                     BoxDecoration(borderRadius: BorderRadius.circular(1000)),
                 child: ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => OTPScreen(
-                              _controller.text,
-                              _userNameTextController.text,
-                              selectedValue!)));
+                          builder: (context) => OTPScreen(_controller.text,
+                              _userNameTextController.text, selectedValue!)));
                     },
                     child: Text(
                       'Next',

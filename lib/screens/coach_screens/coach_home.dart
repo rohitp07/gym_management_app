@@ -359,7 +359,7 @@ class StartState extends State<Coach_home> {
                                   child: Column(
                                     children: [
                                       Icon(
-                                        Icons.payment,
+                                        Icons.wallet,
                                         color: Color(0xFFFFEFB7),
                                         size: 100,
                                       ),
@@ -378,28 +378,32 @@ class StartState extends State<Coach_home> {
                 ],
               ),
             ),
+            SizedBox(height: 20),
             Center(
               child: GestureDetector(
-                  child: ElevatedButton(
-                      onPressed: () async {
-                        try {
-                          await FirebaseAuth.instance.signOut();
-                        } catch (e) {
-                          print(e);
-                        }
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LoginScreen()));
-                      },
-                      child: Text(
-                        'Logout',
-                        style:
-                            TextStyle(color: Color(0xFF63447E), fontSize: 20),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        primary: Color(0xFFF2CB41),
-                      ))),
+                  child: SizedBox(
+                height: 50,
+                width: 300,
+                child: ElevatedButton(
+                    onPressed: () async {
+                      try {
+                        await FirebaseAuth.instance.signOut();
+                      } catch (e) {
+                        print(e);
+                      }
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen()));
+                    },
+                    child: Text(
+                      'Logout',
+                      style: TextStyle(color: Color(0xFF63447E), fontSize: 20),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFF2CB41),
+                    )),
+              )),
             ),
           ],
         ),
