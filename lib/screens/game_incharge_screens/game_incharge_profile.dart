@@ -57,8 +57,9 @@ class StartState extends State<GameInchargePersonalDetails> {
           radius: 25,
           backgroundColor: Colors.green,
           child: CircleAvatar(
+            backgroundColor: Colors.white,
             backgroundImage:
-                new AssetImage('assets/games/${subjectData[i]}.jpeg'),
+                new AssetImage('assets/games/${subjectData[i]}.png'),
             radius: 20.0,
           ),
         ),

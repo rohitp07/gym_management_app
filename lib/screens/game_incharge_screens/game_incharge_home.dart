@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gym222/screens/game_incharge_screens/game_incharge_profile.dart';
+import 'package:gym222/screens/schedule.dart';
 
 import '../login_screen.dart';
 
@@ -52,8 +53,9 @@ class StartState extends State<GameIncharge_home> {
           radius: 25,
           backgroundColor: Colors.green,
           child: CircleAvatar(
+            backgroundColor: Colors.white,
             backgroundImage:
-                new AssetImage('assets/games/${subjectData[i]}.jpeg'),
+                new AssetImage('assets/games/${subjectData[i]}.png'),
             radius: 20.0,
           ),
         ),
@@ -313,7 +315,13 @@ class StartState extends State<GameIncharge_home> {
                             borderRadius: BorderRadius.circular(80),
                           ),
                           child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Student_schedule(phone)),
+                                );
+                              },
                               child: Padding(
                                 padding: const EdgeInsets.only(
                                   top: 20,
