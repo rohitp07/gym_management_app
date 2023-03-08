@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gym222/screens/admin_screens/admin_home.dart';
 import 'package:gym222/screens/player_screens/player_home.dart';
 import 'package:gym222/screens/student_screens/student_home.dart';
 import 'package:pinput/pinput.dart';
@@ -102,7 +103,7 @@ class _OTPScreenState extends State<OTPScreen1> {
               } else if (widget.userType == "Admin") {
                 Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                    MaterialPageRoute(builder: (context) => admin_home(widget.phone)),
                     (route) => false);
               }
                       // Navigator.pushAndRemoveUntil(

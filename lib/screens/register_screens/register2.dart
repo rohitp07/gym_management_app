@@ -153,6 +153,32 @@ class _MultiSelectDropDownScreenState extends State<MultiSelectDropDownScreen> {
         print(e);
       }
     };
+    if (widget.userType == "Game Incharge") {
+      try {
+        final docUser = FirebaseFirestore.instance
+            .collection(
+              widget.userType.trim(),
+            )
+            .doc(widget.phone.trim());
+        final json = {
+          'phone': widget.phone.trim(),
+          'email': email,
+          'name': widget.userName.trim(),
+          'usertype': widget.userType.trim(),
+          'selectedsports': subjectData,
+          'Address': address1,
+          'Date of Birth': dob,
+          'Height':height,
+          'Weight':weight,
+          'T Shirt Size':tShirtSize,
+          'Shoe Size':shoeSize,
+          'Blood Group':bloodGroup,
+        };
+        await docUser.set(json);
+      } catch (e) {
+        print(e);
+      }
+    };
   }
 
   Future createUserData() async {

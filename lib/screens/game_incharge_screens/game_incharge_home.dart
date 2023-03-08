@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gym222/screens/game_incharge_screens/game_incharge_profile.dart';
-import 'package:gym222/screens/schedule.dart';
+import 'package:gym222/screens/admin_screens/schedule_admin.dart';
 
 import '../login_screen.dart';
 
@@ -319,7 +319,7 @@ class StartState extends State<GameIncharge_home> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Student_schedule(phone)),
+                                      builder: (context) => Schedule_Admin(phone)),
                                 );
                               },
                               child: Padding(

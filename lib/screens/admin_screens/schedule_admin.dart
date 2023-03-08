@@ -2,20 +2,16 @@ import 'dart:io';
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/material.dart';
-import 'package:gym222/screens/game_incharge_screens/game_incharge_home.dart';
 
-class Student_schedule extends StatefulWidget {
+class Schedule_Admin extends StatefulWidget {
   String phone;
-  Student_schedule(this.phone);
+  Schedule_Admin(this.phone);
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<Student_schedule> {
+class _MyHomePageState extends State<Schedule_Admin> {
   bool? badmintonWeekdayMorning = false;
   bool? badmintonWeekdayEvening = false;
   bool? badmintonWeekendMorning = false;
@@ -43,77 +39,59 @@ class _MyHomePageState extends State<Student_schedule> {
 
   final User? user = FirebaseAuth.instance.currentUser;
 
-  List subjectData = [];
-  readData() async {
-    // var collection = FirebaseFirestore.instance.doc('userdata/');
-    var collection = FirebaseFirestore.instance.collection('Game Incharge');
-    print(
-        'DATA PROFILE: ${user?.phoneNumber.toString().replaceFirst('+91', '')}');
-    var docSnapshot = await collection
-        .doc(user?.phoneNumber.toString().replaceFirst('+91', ''))
-        .get();
-    if (docSnapshot.exists) {
-      Map<String, dynamic>? data = docSnapshot.data();
-      setState(() {
-        subjectData = data?['selectedsports'];
-      });
-      buildSportsList();
-      // <-- The value you want to retrieve.
-      // print('DATA PROFILE: ${user?.phoneNumber}');
-    }
-  }
+  // List subjectData = [];
+  // readData() async {
+  //   // var collection = FirebaseFirestore.instance.doc('userdata/');
+  //   var collection = FirebaseFirestore.instance.collection('Game Incharge');
+  //   print(
+  //       'DATA PROFILE: ${user?.phoneNumber.toString().replaceFirst('+91', '')}');
+  //   var docSnapshot = await collection
+  //       .doc(user?.phoneNumber.toString().replaceFirst('+91', ''))
+  //       .get();
+  //   if (docSnapshot.exists) {
+  //     Map<String, dynamic>? data = docSnapshot.data();
+  //     setState(() {
+  //       subjectData = data?['selectedsports'];
+  //     });
+  //     buildSportsList();
+  //     // <-- The value you want to retrieve.
+  //     // print('DATA PROFILE: ${user?.phoneNumber}');
+  //   }
+  // }
 
-  prepareSchedule() async {
-    var collection = FirebaseFirestore.instance.collection('Schedule');
-    print(
-        'DATA PROFILE: ${user?.phoneNumber.toString().replaceFirst('+91', '')}');
-    var docSnapshot = await collection
-        .doc(user?.phoneNumber.toString().replaceFirst('+91', ''))
-        .get();
-    if (docSnapshot.exists) {
-      Map<String, dynamic>? data = docSnapshot.data();
-      setState(() {
-        badmintonWeekdayMorning = data?['badmintonWeekdayMorning'];
-      });
-      // <-- The value you want to retrieve.
-      // print('DATA PROFILE: ${user?.phoneNumber}');
-    }
-  }
-
-  List<Widget> widgetList = [];
-  buildSportsList() {
-    for (int i = 0; i < subjectData.length; i++) {
-      subjectData[i];
-      print('Game ${subjectData[i]}');
-      widgetList.add(
-        CircleAvatar(
-          radius: 25,
-          backgroundColor: Colors.green,
-          child: CircleAvatar(
-            backgroundColor: Colors.white,
-            backgroundImage:
-                new AssetImage('assets/games/${subjectData[i]}.png'),
-            radius: 20.0,
-          ),
-        ),
-      );
-    }
-    setState(() {
-      widgetList = widgetList;
-    });
-  }
+  // List<Widget> widgetList = [];
+  // buildSportsList() {
+  //   for (int i = 0; i < subjectData.length; i++) {
+  //     subjectData[i];
+  //     print('Game ${subjectData[i]}');
+  //     widgetList.add(
+  //       CircleAvatar(
+  //         radius: 25,
+  //         backgroundColor: Colors.green,
+  //         child: CircleAvatar(
+  //           backgroundColor: Colors.white,
+  //           backgroundImage:
+  //               new AssetImage('assets/games/${subjectData[i]}.png'),
+  //           radius: 20.0,
+  //         ),
+  //       ),
+  //     );
+  //   }
+  //   setState(() {
+  //     widgetList = widgetList;
+  //   });
+  // }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    readData();
-    prepareSchedule();
+    // readData();
   }
 
   Future addSchedule() async {
     final docUser =
-        FirebaseFirestore.instance.collection('schedule').doc('7058181974');
+        FirebaseFirestore.instance.collection('schedule').doc('SCHEDULE');
 
     final json = {
       'Badminton on Weekday Morning': badmintonWeekdayMorning,
@@ -179,34 +157,34 @@ class _MyHomePageState extends State<Student_schedule> {
               // ),
             ),
           ),
-          Container(
-            height: 140,
-            width: 400,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.only(top: 10.0, bottom: 0, left: 15),
-                  child: Text("Your Sports",
-                      style: TextStyle(
-                          color: Colors.amber,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25.0,
-                          letterSpacing: 1.5)),
-                ),
-                Container(
-                  height: 74,
-                  width: 400,
-                  margin: EdgeInsets.only(top: 10.0, bottom: 0, left: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: widgetList,
-                  ),
-                ),
-              ],
-            ),
-          ),
+          // Container(
+          //   height: 140,
+          //   width: 400,
+          //   child: Column(
+          //     mainAxisAlignment: MainAxisAlignment.start,
+          //     crossAxisAlignment: CrossAxisAlignment.start,
+          //     children: <Widget>[
+          //       Container(
+          //         margin: EdgeInsets.only(top: 10.0, bottom: 0, left: 15),
+          //         child: Text("Your Sports",
+          //             style: TextStyle(
+          //                 color: Colors.amber,
+          //                 fontWeight: FontWeight.bold,
+          //                 fontSize: 25.0,
+          //                 letterSpacing: 1.5)),
+          //       ),
+          //       Container(
+          //         height: 74,
+          //         width: 400,
+          //         margin: EdgeInsets.only(top: 10.0, bottom: 0, left: 10),
+          //         child: Row(
+          //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //           children: widgetList,
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
           Container(
             width: 400,
             margin: EdgeInsets.only(top: 10.0, bottom: 0, left: 5),
