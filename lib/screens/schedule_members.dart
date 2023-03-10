@@ -1,17 +1,19 @@
+import 'dart:ffi';
 import 'dart:io';
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class Schedule_Admin extends StatefulWidget {
+class Schedule_Members extends StatefulWidget {
   String phone;
-  Schedule_Admin(this.phone);
+  Schedule_Members(this.phone);
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<Schedule_Admin> {
+class _MyHomePageState extends State<Schedule_Members> {
+  final User? user = FirebaseAuth.instance.currentUser;
   bool? badmintonWeekdayMorning = false;
   bool? badmintonWeekdayEvening = false;
   bool? badmintonWeekendMorning = false;
@@ -37,8 +39,6 @@ class _MyHomePageState extends State<Schedule_Admin> {
   bool? chessWeekendMorning = false;
   bool? chessWeekendEvening = false;
   bool isLoading = false;
-
-  final User? user = FirebaseAuth.instance.currentUser;
 
   reassignData() async {
     setState(() {
@@ -83,40 +83,8 @@ class _MyHomePageState extends State<Schedule_Admin> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    // readData();
     reassignData();
-  }
-
-  Future addSchedule() async {
-    final docUser =
-        FirebaseFirestore.instance.collection('schedule').doc('SCHEDULE');
-
-    final json = {
-      'Badminton on Weekday Morning': badmintonWeekdayMorning,
-      'Badminton on Weekday Evening': badmintonWeekdayEvening,
-      'Badminton on Weekend Morning': badmintonWeekendMorning,
-      'Badminton on Weekend Evening': badmintonWeekdayEvening,
-      'TableTennis on Weekday Morning': tabletennisWeekdayMorning,
-      'TableTennis on Weekday Evening': tabletennisWeekdayEvening,
-      'TableTennis on Weekend Morning': tabletennisWeekendMorning,
-      'TableTennis on Weekend Evening': tabletennisWeekendEvening,
-      'Cycling on Weekday Morning': cyclingWeekdayMorning,
-      'Cycling on Weekday Evening': cyclingWeekdayEvening,
-      'Cycling on Weekend Morning': cyclingWeekendMorning,
-      'Cycling on Weekend Evening': cyclingWeekendEvening,
-      'Tennis on Weekday Morning': tennisWeekdayMorning,
-      'Tennis on Weekday Evening': tennisWeekdayEvening,
-      'Tennis on Weekend Morning': tennisWeekendMorning,
-      'Tennis on Weekend Evening': tennisWeekendEvening,
-      'Football on Weekday Morning': footballWeekdayMorning,
-      'Football on Weekday Evening': footballWeekdayEvening,
-      'Football on Weekend Morning': footballWeekdayMorning,
-      'Football on Weekend Evening': footballWeekendEvening,
-      'Chess on Weekday Morning': chessWeekdayMorning,
-      'Chess on Weekday Evening': chessWeekdayEvening,
-      'Chess on Weekend Morning': chessWeekendMorning,
-      'Chess on Weekend Evening': chessWeekendEvening,
-    };
-    await docUser.set(json, SetOptions(merge: true));
   }
 
   @override
@@ -156,34 +124,6 @@ class _MyHomePageState extends State<Schedule_Admin> {
                     // ),
                   ),
                 ),
-                // Container(
-                //   height: 140,
-                //   width: 400,
-                //   child: Column(
-                //     mainAxisAlignment: MainAxisAlignment.start,
-                //     crossAxisAlignment: CrossAxisAlignment.start,
-                //     children: <Widget>[
-                //       Container(
-                //         margin: EdgeInsets.only(top: 10.0, bottom: 0, left: 15),
-                //         child: Text("Your Sports",
-                //             style: TextStyle(
-                //                 color: Colors.amber,
-                //                 fontWeight: FontWeight.bold,
-                //                 fontSize: 25.0,
-                //                 letterSpacing: 1.5)),
-                //       ),
-                //       Container(
-                //         height: 74,
-                //         width: 400,
-                //         margin: EdgeInsets.only(top: 10.0, bottom: 0, left: 10),
-                //         child: Row(
-                //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                //           children: widgetList,
-                //         ),
-                //       ),
-                //     ],
-                //   ),
-                // ),
                 Container(
                   width: 400,
                   margin: EdgeInsets.only(top: 10.0, bottom: 0, left: 5),
@@ -197,9 +137,6 @@ class _MyHomePageState extends State<Schedule_Admin> {
                             border: TableBorder.all(
                               color: Colors.grey,
                             ),
-                            // textDirection: TextDirection.rtl,
-                            // defaultVerticalAlignment: TableCellVerticalAlignment.bottom,
-                            // border:TableBorder.all(width: 2.0,color: Colors.red),
                             children: [
                               TableRow(
                                   decoration: BoxDecoration(color: Colors.grey),
@@ -268,41 +205,44 @@ class _MyHomePageState extends State<Schedule_Admin> {
                                   Checkbox(
                                     value: badmintonWeekdayMorning,
                                     activeColor: Color(0xFF63447E),
+                                    // badmintonWeekdayMorning == false
+                                    //     ? Icon(Icons.check_box_outline_blank)
+                                    //     : Icon(Icons.check_box),
                                     onChanged: (bool? value) {
-                                      setState(() {
-                                        badmintonWeekdayMorning = value!;
-                                      });
-                                      badmintonWeekdayMorning = value;
+                                      // setState(() {
+                                      //   badmintonWeekdayMorning = value!;
+                                      // });
+                                      // badmintonWeekdayMorning = value;
                                     },
                                   ),
                                   Checkbox(
                                     value: badmintonWeekdayEvening,
                                     activeColor: Color(0xFF63447E),
                                     onChanged: (bool? value) {
-                                      setState(() {
-                                        badmintonWeekdayEvening = value!;
-                                      });
-                                      badmintonWeekdayEvening = value;
+                                      // setState(() {
+                                      //   badmintonWeekdayEvening = value!;
+                                      // });
+                                      // badmintonWeekdayEvening = value;
                                     },
                                   ),
                                   Checkbox(
                                     value: badmintonWeekendMorning,
                                     activeColor: Color(0xFF63447E),
                                     onChanged: (bool? value) {
-                                      setState(() {
-                                        badmintonWeekendMorning = value!;
-                                      });
-                                      badmintonWeekendMorning = value;
+                                      // setState(() {
+                                      //   badmintonWeekendMorning = value!;
+                                      // });
+                                      // badmintonWeekendMorning = value;
                                     },
                                   ),
                                   Checkbox(
                                     value: badmintonWeekendEvening,
                                     activeColor: Color(0xFF63447E),
                                     onChanged: (bool? value) {
-                                      setState(() {
-                                        badmintonWeekendEvening = value!;
-                                      });
-                                      badmintonWeekendEvening = value;
+                                      // setState(() {
+                                      //   badmintonWeekendEvening = value!;
+                                      // });
+                                      // badmintonWeekendEvening = value;
                                     },
                                   ),
                                 ],
@@ -322,40 +262,40 @@ class _MyHomePageState extends State<Schedule_Admin> {
                                       value: tabletennisWeekdayMorning,
                                       activeColor: Color(0xFF63447E),
                                       onChanged: (bool? value) {
-                                        setState(() {
-                                          tabletennisWeekdayMorning = value!;
-                                        });
-                                        tabletennisWeekdayMorning = value;
+                                        // setState(() {
+                                        //   tabletennisWeekdayMorning = value!;
+                                        // });
+                                        // tabletennisWeekdayMorning = value;
                                       },
                                     ),
                                     Checkbox(
                                       value: tabletennisWeekdayEvening,
                                       activeColor: Color(0xFF63447E),
                                       onChanged: (bool? value) {
-                                        setState(() {
-                                          tabletennisWeekdayEvening = value!;
-                                        });
-                                        tabletennisWeekdayEvening = value;
+                                        // setState(() {
+                                        //   tabletennisWeekdayEvening = value!;
+                                        // });
+                                        // tabletennisWeekdayEvening = value;
                                       },
                                     ),
                                     Checkbox(
                                       value: tabletennisWeekendMorning,
                                       activeColor: Color(0xFF63447E),
                                       onChanged: (bool? value) {
-                                        setState(() {
-                                          tabletennisWeekendMorning = value!;
-                                        });
-                                        tabletennisWeekendMorning = value;
+                                        // setState(() {
+                                        //   tabletennisWeekendMorning = value!;
+                                        // });
+                                        // tabletennisWeekendMorning = value;
                                       },
                                     ),
                                     Checkbox(
                                       value: tabletennisWeekendEvening,
                                       activeColor: Color(0xFF63447E),
                                       onChanged: (bool? value) {
-                                        setState(() {
-                                          tabletennisWeekendEvening = value!;
-                                        });
-                                        tabletennisWeekendEvening = value;
+                                        // setState(() {
+                                        //   tabletennisWeekendEvening = value!;
+                                        // });
+                                        // tabletennisWeekendEvening = value;
                                       },
                                     ),
                                   ]),
@@ -375,40 +315,40 @@ class _MyHomePageState extends State<Schedule_Admin> {
                                       value: cyclingWeekdayMorning,
                                       activeColor: Color(0xFF63447E),
                                       onChanged: (bool? value) {
-                                        setState(() {
-                                          cyclingWeekdayMorning = value!;
-                                        });
-                                        cyclingWeekdayMorning = value;
+                                        // setState(() {
+                                        //   cyclingWeekdayMorning = value!;
+                                        // });
+                                        // cyclingWeekdayMorning = value;
                                       },
                                     ),
                                     Checkbox(
                                       value: cyclingWeekdayEvening,
                                       activeColor: Color(0xFF63447E),
                                       onChanged: (bool? value) {
-                                        setState(() {
-                                          cyclingWeekdayEvening = value!;
-                                        });
-                                        cyclingWeekdayEvening = value;
+                                        // setState(() {
+                                        //   cyclingWeekdayEvening = value!;
+                                        // });
+                                        // cyclingWeekdayEvening = value;
                                       },
                                     ),
                                     Checkbox(
                                       value: cyclingWeekendMorning,
                                       activeColor: Color(0xFF63447E),
                                       onChanged: (bool? value) {
-                                        setState(() {
-                                          cyclingWeekendMorning = value!;
-                                        });
-                                        cyclingWeekendMorning = value;
+                                        // setState(() {
+                                        //   cyclingWeekendMorning = value!;
+                                        // });
+                                        // cyclingWeekendMorning = value;
                                       },
                                     ),
                                     Checkbox(
                                       value: cyclingWeekendEvening,
                                       activeColor: Color(0xFF63447E),
                                       onChanged: (bool? value) {
-                                        setState(() {
-                                          cyclingWeekendEvening = value!;
-                                        });
-                                        cyclingWeekendEvening = value;
+                                        // setState(() {
+                                        //   cyclingWeekendEvening = value!;
+                                        // });
+                                        // cyclingWeekendEvening = value;
                                       },
                                     ),
                                   ]),
@@ -427,40 +367,40 @@ class _MyHomePageState extends State<Schedule_Admin> {
                                       value: tennisWeekdayMorning,
                                       activeColor: Color(0xFF63447E),
                                       onChanged: (bool? value) {
-                                        setState(() {
-                                          tennisWeekdayMorning = value!;
-                                        });
-                                        tennisWeekdayMorning = value;
+                                        // setState(() {
+                                        //   tennisWeekdayMorning = value!;
+                                        // });
+                                        // tennisWeekdayMorning = value;
                                       },
                                     ),
                                     Checkbox(
                                       value: tennisWeekdayEvening,
                                       activeColor: Color(0xFF63447E),
                                       onChanged: (bool? value) {
-                                        setState(() {
-                                          tennisWeekdayEvening = value!;
-                                        });
-                                        tennisWeekdayEvening = value;
+                                        // setState(() {
+                                        //   tennisWeekdayEvening = value!;
+                                        // });
+                                        // tennisWeekdayEvening = value;
                                       },
                                     ),
                                     Checkbox(
                                       value: tennisWeekendMorning,
                                       activeColor: Color(0xFF63447E),
                                       onChanged: (bool? value) {
-                                        setState(() {
-                                          tennisWeekendMorning = value!;
-                                        });
-                                        tennisWeekendMorning = value;
+                                        // setState(() {
+                                        //   tennisWeekendMorning = value!;
+                                        // });
+                                        // tennisWeekendMorning = value;
                                       },
                                     ),
                                     Checkbox(
                                       value: tennisWeekendEvening,
                                       activeColor: Color(0xFF63447E),
                                       onChanged: (bool? value) {
-                                        setState(() {
-                                          tennisWeekendEvening = value!;
-                                        });
-                                        tennisWeekendEvening = value;
+                                        // setState(() {
+                                        //   tennisWeekendEvening = value!;
+                                        // });
+                                        // tennisWeekendEvening = value;
                                       },
                                     ),
                                   ]),
@@ -482,40 +422,40 @@ class _MyHomePageState extends State<Schedule_Admin> {
                                       value: footballWeekdayMorning,
                                       activeColor: Color(0xFF63447E),
                                       onChanged: (bool? value) {
-                                        setState(() {
-                                          footballWeekdayMorning = value!;
-                                        });
-                                        footballWeekdayMorning = value;
+                                        // setState(() {
+                                        //   footballWeekdayMorning = value!;
+                                        // });
+                                        // footballWeekdayMorning = value;
                                       },
                                     ),
                                     Checkbox(
                                       value: footballWeekdayEvening,
                                       activeColor: Color(0xFF63447E),
                                       onChanged: (bool? value) {
-                                        setState(() {
-                                          footballWeekdayEvening = value!;
-                                        });
-                                        footballWeekdayEvening = value;
+                                        // setState(() {
+                                        //   footballWeekdayEvening = value!;
+                                        // });
+                                        // footballWeekdayEvening = value;
                                       },
                                     ),
                                     Checkbox(
                                       value: footballWeekendMorning,
                                       activeColor: Color(0xFF63447E),
                                       onChanged: (bool? value) {
-                                        setState(() {
-                                          footballWeekendMorning = value!;
-                                        });
-                                        footballWeekendMorning = value;
+                                        // setState(() {
+                                        //   footballWeekendMorning = value!;
+                                        // });
+                                        // footballWeekendMorning = value;
                                       },
                                     ),
                                     Checkbox(
                                       value: footballWeekendEvening,
                                       activeColor: Color(0xFF63447E),
                                       onChanged: (bool? value) {
-                                        setState(() {
-                                          footballWeekendEvening = value!;
-                                        });
-                                        footballWeekendEvening = value;
+                                        // setState(() {
+                                        //   footballWeekendEvening = value!;
+                                        // });
+                                        // footballWeekendEvening = value;
                                       },
                                     ),
                                   ]),
@@ -537,65 +477,45 @@ class _MyHomePageState extends State<Schedule_Admin> {
                                       value: chessWeekdayMorning,
                                       activeColor: Color(0xFF63447E),
                                       onChanged: (bool? value) {
-                                        setState(() {
-                                          chessWeekdayMorning = value!;
-                                        });
-                                        chessWeekdayMorning = value;
+                                        // setState(() {
+                                        //   chessWeekdayMorning = value!;
+                                        // });
+                                        // chessWeekdayMorning = value;
                                       },
                                     ),
                                     Checkbox(
                                       value: chessWeekdayEvening,
                                       activeColor: Color(0xFF63447E),
                                       onChanged: (bool? value) {
-                                        setState(() {
-                                          chessWeekdayEvening = value!;
-                                        });
-                                        chessWeekdayEvening = value;
+                                        // setState(() {
+                                        //   chessWeekdayEvening = value!;
+                                        // });
+                                        // chessWeekdayEvening = value;
                                       },
                                     ),
                                     Checkbox(
                                       value: chessWeekendMorning,
                                       activeColor: Color(0xFF63447E),
                                       onChanged: (bool? value) {
-                                        setState(() {
-                                          chessWeekendMorning = value!;
-                                        });
-                                        chessWeekendMorning = value;
+                                        // setState(() {
+                                        //   chessWeekendMorning = value!;
+                                        // });
+                                        // chessWeekendMorning = value;
                                       },
                                     ),
                                     Checkbox(
                                       value: chessWeekendEvening,
                                       activeColor: Color(0xFF63447E),
                                       onChanged: (bool? value) {
-                                        setState(() {
-                                          chessWeekendEvening = value!;
-                                        });
-                                        chessWeekendEvening = value;
+                                        // setState(() {
+                                        //   chessWeekendEvening = value!;
+                                        // });
+                                        // chessWeekendEvening = value;
                                       },
                                     ),
                                   ]),
                             ],
                           ),
-                        ),
-                        SizedBox(height: 20),
-                        Center(
-                          child: GestureDetector(
-                              child: SizedBox(
-                            height: 50,
-                            width: 300,
-                            child: ElevatedButton(
-                                onPressed: () async {
-                                  await addSchedule();
-                                },
-                                child: Text(
-                                  'Save',
-                                  style: TextStyle(
-                                      color: Color(0xFF63447E), fontSize: 20),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFFF2CB41),
-                                )),
-                          )),
                         ),
                       ]),
                 )

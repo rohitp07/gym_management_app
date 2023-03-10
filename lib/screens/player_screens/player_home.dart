@@ -1,7 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gym222/screens/news.dart';
+import 'package:gym222/screens/payment.dart';
 import 'package:gym222/screens/player_screens/player_profile.dart';
+import 'package:gym222/screens/schedule_members.dart';
 
 import '../login_screen.dart';
 
@@ -273,7 +276,13 @@ class StartState extends State<Player_home> {
                             borderRadius: BorderRadius.circular(80),
                           ),
                           child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => News()),
+                                );
+                              },
                               child: Padding(
                                 padding: const EdgeInsets.only(
                                   top: 20,
@@ -314,7 +323,14 @@ class StartState extends State<Player_home> {
                             borderRadius: BorderRadius.circular(80),
                           ),
                           child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          Schedule_Members(phone)),
+                                );
+                              },
                               child: Padding(
                                 padding: const EdgeInsets.only(
                                   top: 20,
@@ -326,7 +342,7 @@ class StartState extends State<Player_home> {
                                   child: Column(
                                     children: [
                                       Icon(
-                                        Icons.schedule,
+                                        Icons.event_note_sharp,
                                         color: Color(0xFFFFEFB7),
                                         size: 100,
                                       ),
@@ -347,7 +363,13 @@ class StartState extends State<Player_home> {
                             borderRadius: BorderRadius.circular(80),
                           ),
                           child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => payment()),
+                                );
+                              },
                               child: Padding(
                                 padding: const EdgeInsets.only(
                                   top: 20,

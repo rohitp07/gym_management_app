@@ -2,7 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gym222/screens/game_incharge_screens/game_incharge_profile.dart';
-import 'package:gym222/screens/admin_screens/schedule_admin.dart';
+import 'package:gym222/screens/news.dart';
+import 'package:gym222/screens/payment.dart';
+import 'package:gym222/screens/schedule_members.dart';
 
 import '../login_screen.dart';
 
@@ -158,59 +160,6 @@ class StartState extends State<GameIncharge_home> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: widgetList,
-                      // [
-                      //   CircleAvatar(
-                      //     radius: 25,
-                      //     backgroundColor: Colors.green,
-                      //     child: CircleAvatar(
-                      //       backgroundImage:
-                      //           new AssetImage('assets/games/badminton.jpg'),
-                      //       radius: 20.0,
-                      //     ),
-                      //   ),
-                      //   CircleAvatar(
-                      //     radius: 25,
-                      //     backgroundColor: Colors.green,
-                      //     child: CircleAvatar(
-                      //       backgroundImage: new AssetImage('assets/Logo.png'),
-                      //       radius: 20.0,
-                      //     ),
-                      //   ),
-                      //   CircleAvatar(
-                      //     radius: 25,
-                      //     backgroundColor: Colors.green,
-                      //     child: CircleAvatar(
-                      //       backgroundImage:
-                      //           new AssetImage('assets/games/badminton.jpg'),
-                      //       radius: 20.0,
-                      //     ),
-                      //   ),
-                      //   CircleAvatar(
-                      //     radius: 25,
-                      //     backgroundColor: Colors.green,
-                      //     child: CircleAvatar(
-                      //       backgroundImage: new AssetImage('assets/Logo.png'),
-                      //       radius: 20.0,
-                      //     ),
-                      //   ),
-                      //   CircleAvatar(
-                      //     radius: 25,
-                      //     backgroundColor: Colors.green,
-                      //     child: CircleAvatar(
-                      //       backgroundImage:
-                      //           new AssetImage('assets/games/badminton.jpg'),
-                      //       radius: 20.0,
-                      //     ),
-                      //   ),
-                      //   CircleAvatar(
-                      //     radius: 25,
-                      //     backgroundColor: Colors.green,
-                      //     child: CircleAvatar(
-                      //       backgroundImage: new AssetImage('assets/Logo.png'),
-                      //       radius: 20.0,
-                      //     ),
-                      //   ),
-                      // ],
                     ),
                   ),
                 ],
@@ -274,7 +223,14 @@ class StartState extends State<GameIncharge_home> {
                             borderRadius: BorderRadius.circular(80),
                           ),
                           child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          News()),
+                                );
+                              },
                               child: Padding(
                                 padding: const EdgeInsets.only(
                                   top: 20,
@@ -319,7 +275,8 @@ class StartState extends State<GameIncharge_home> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Schedule_Admin(phone)),
+                                      builder: (context) =>
+                                          Schedule_Members(phone)),
                                 );
                               },
                               child: Padding(
@@ -333,7 +290,7 @@ class StartState extends State<GameIncharge_home> {
                                   child: Column(
                                     children: [
                                       Icon(
-                                        Icons.schedule,
+                                        Icons.event_note_sharp,
                                         color: Color(0xFFFFEFB7),
                                         size: 100,
                                       ),
@@ -354,7 +311,14 @@ class StartState extends State<GameIncharge_home> {
                             borderRadius: BorderRadius.circular(80),
                           ),
                           child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          payment()),
+                                );
+                              },
                               child: Padding(
                                 padding: const EdgeInsets.only(
                                   top: 20,

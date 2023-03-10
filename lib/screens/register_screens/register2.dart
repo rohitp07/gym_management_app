@@ -200,7 +200,6 @@ class _MultiSelectDropDownScreenState extends State<MultiSelectDropDownScreen> {
       print(e);
     }
   }
-
   @override
   Widget build(BuildContext context) {
     // List subjectData = [];

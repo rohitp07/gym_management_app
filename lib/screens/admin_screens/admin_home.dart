@@ -9,6 +9,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
 import 'package:gym222/screens/login_screen.dart';
 import 'package:gym222/screens/admin_screens/schedule_admin.dart';
+import 'package:gym222/screens/news.dart';
+import 'package:gym222/screens/payment.dart';
 
 class admin_home extends StatefulWidget {
   String phone;
@@ -55,7 +57,7 @@ class _MyHomePageState extends State<admin_home> {
   initWidget() {
     return Scaffold(
       backgroundColor: Color(0xFF63447E),
-      body: Container(
+      body: SingleChildScrollView(child: Container(
         child: Column(
           children: <Widget>[
             Container(
@@ -386,12 +388,6 @@ class _MyHomePageState extends State<admin_home> {
                           ),
                           child: ElevatedButton(
                               onPressed: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //       builder: (context) =>
-                                //           StudentPersonalDetails(phone)),
-                                // );
                               },
                               child: Padding(
                                 padding: const EdgeInsets.only(
@@ -539,7 +535,14 @@ class _MyHomePageState extends State<admin_home> {
                             borderRadius: BorderRadius.circular(80),
                           ),
                           child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          News()),
+                                );
+                              },
                               child: Padding(
                                 padding: const EdgeInsets.only(
                                   top: 20,
@@ -551,7 +554,7 @@ class _MyHomePageState extends State<admin_home> {
                                   child: Column(
                                     children: [
                                       Icon(
-                                        Icons.note,
+                                        Icons.newspaper,
                                         color: Color(0xFFFFEFB7),
                                         size: 100,
                                       ),
@@ -632,7 +635,7 @@ class _MyHomePageState extends State<admin_home> {
             ),
           ],
         ),
-      ),
+      ),),
     );
   }
 }
