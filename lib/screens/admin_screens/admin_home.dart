@@ -3,14 +3,10 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
 import 'package:gym222/screens/login_screen.dart';
 import 'package:gym222/screens/admin_screens/schedule_admin.dart';
 import 'package:gym222/screens/news.dart';
-import 'package:gym222/screens/payment.dart';
 
 class admin_home extends StatefulWidget {
   String phone;

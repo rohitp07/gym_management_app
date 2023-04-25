@@ -1,10 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:flutter/cupertino.dart';
 
-import '../login_screen.dart';
-import '../reusable_widgets/reusable_textfield.dart';
 import 'otp.dart';
 
 class student_registration extends StatefulWidget {

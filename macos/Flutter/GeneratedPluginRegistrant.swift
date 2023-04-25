@@ -8,7 +8,7 @@ import Foundation
 import cloud_firestore
 import firebase_auth
 import firebase_core
-import shared_preferences_macos
+import shared_preferences_foundation
 import smart_auth
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {

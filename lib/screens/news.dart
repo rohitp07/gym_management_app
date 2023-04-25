@@ -1,4 +1,7 @@
+import 'dart:io';
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:gym222/screens/addNewNews.dart';
 import 'package:gym222/screens/notification.dart';
 
 //
@@ -17,6 +20,8 @@ class News extends StatefulWidget {
 String? selectedValue;
 
 class StartState extends State<News> {
+  // bool _isButtonVisible = true;
+
   @override
   Widget build(BuildContext context) {
     return initWidget();
@@ -25,213 +30,217 @@ class StartState extends State<News> {
   initWidget() {
     return Scaffold(
       backgroundColor: Color(0xFF63447E),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 15.0, right: 15.0),
-        child: Column(
-          children: <Widget>[
-            SizedBox(height: 50),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(
-                  Icons.arrow_back,
-                  size: 25,
-                  color: Color(0xFFC4C4C4),
-                ),
-                SizedBox(
-                  width: 15,
-                ),
-                Text(
-                  'News And Notifications',
-                  style: TextStyle(
-                    fontSize: 22.0,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFFFFEFB7),
+      body:
+          // SingleChildScrollView(
+
+          Container(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+          child: Column(
+            children: <Widget>[
+              SizedBox(height: 50),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Icon(
+                    Icons.arrow_back,
+                    size: 25,
+                    color: Color(0xFFC4C4C4),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 60),
-            Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-              Padding(
-                  padding: EdgeInsets.only(left: 45, right: 16, bottom: 16),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Color(0xFF62417E),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black,
-                          // spreadRadius: 1,
-                          blurRadius: 1.5,
-                          offset: Offset(0, 1.5),
-                        ),
-                        BoxShadow(
-                          color: Color(0xFF62417E),
-                          // spreadRadius: 1,
-                          //blurRadius: 5,
-                          offset: Offset(-2, 0),
-                        ),
-                        BoxShadow(
-                          color: Color(0xFF62417E),
-                          // spreadRadius: 1,
-                          //blurRadius: 5,
-                          offset: Offset(2, 0),
-                        ),
-                      ],
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Text(
+                    'News And Notifications',
+                    style: TextStyle(
+                      fontSize: 22.0,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFFFFEFB7),
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          child: Icon(Icons.newspaper,
-                              size: 30, color: Colors.white),
-                          padding: const EdgeInsets.all(12),
-                        ),
-                        Material(
-                          color: Colors.transparent,
-                          child: InkResponse(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => News()),
-                              );
-                            },
-                            splashColor: Colors.blue,
-                            highlightColor: Colors.blue.withOpacity(0.5),
-                            child: SizedBox(
-                              width: 120,
-                              height: 50,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Color(0xFF62417E),
-                                  borderRadius: const BorderRadius.only(
-                                    bottomRight: Radius.circular(12),
-                                    bottomLeft: Radius.circular(12),
+                  ),
+                ],
+              ),
+              SizedBox(height: 60),
+              Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                Padding(
+                    padding: EdgeInsets.only(left: 45, right: 16, bottom: 16),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Color(0xFF62417E),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black,
+                            // spreadRadius: 1,
+                            blurRadius: 1.5,
+                            offset: Offset(0, 1.5),
+                          ),
+                          BoxShadow(
+                            color: Color(0xFF62417E),
+                            // spreadRadius: 1,
+                            //blurRadius: 5,
+                            offset: Offset(-2, 0),
+                          ),
+                          BoxShadow(
+                            color: Color(0xFF62417E),
+                            // spreadRadius: 1,
+                            //blurRadius: 5,
+                            offset: Offset(2, 0),
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            child: Icon(Icons.newspaper,
+                                size: 30, color: Colors.white),
+                            padding: const EdgeInsets.all(12),
+                          ),
+                          Material(
+                            color: Colors.transparent,
+                            child: InkResponse(
+                              // onTap: () {
+                              //   Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (context) => News()),
+                              //   );
+                              // },
+                              splashColor: Colors.blue,
+                              highlightColor: Colors.blue.withOpacity(0.5),
+                              child: SizedBox(
+                                width: 120,
+                                height: 50,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFF62417E),
+                                    borderRadius: const BorderRadius.only(
+                                      bottomRight: Radius.circular(12),
+                                      bottomLeft: Radius.circular(12),
+                                    ),
                                   ),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    "News",
-                                    style: TextStyle(
-                                      color: Color(0xFFFFEFB7),
-                                      fontWeight: FontWeight.bold,
+                                  child: Center(
+                                    child: Text(
+                                      "News",
+                                      style: TextStyle(
+                                        color: Color(0xFFFFEFB7),
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  )),
-              SizedBox(
-                width: 7,
-              ),
-              Padding(
-                  padding: EdgeInsets.only(left: 5, right: 16, bottom: 16),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Color(0xFF62417E),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black,
-                          // spreadRadius: 1,
-                          blurRadius: 1.5,
-                          offset: Offset(0, 1.5),
-                        ),
-                        BoxShadow(
-                          color: Color(0xFF62417E),
-                          // spreadRadius: 1,
-                          //blurRadius: 5,
-                          offset: Offset(-2, 0),
-                        ),
-                        BoxShadow(
-                          color: Color(0xFF62417E),
-                          // spreadRadius: 1,
-                          //blurRadius: 5,
-                          offset: Offset(2, 0),
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          child: Icon(Icons.notifications_active,
-                              size: 30, color: Colors.white),
-                          padding: const EdgeInsets.all(12),
-                        ),
-                        // Material(
-                        //   color: Colors.transparent,
-                        //   child: InkResponse(
-                        //     onTap: () {
-                        //       Navigator.push(
-                        //           context,
-                        //           MaterialPageRoute(
-                        //               builder: (context) => Notifications()));
-                        //     },
-                        //     splashColor: Colors.blue,
-                        //     // highlightColor: Colors.transparent,
-                        //     child: Container(
-                        //       width: 120,
-                        //       decoration: const BoxDecoration(
-                        //           color: Color(0xFF62417E),
-                        //           borderRadius: BorderRadius.only(
-                        //               bottomRight: Radius.circular(12),
-                        //               bottomLeft: Radius.circular(12))),
-                        //       child: Text(
-                        //         "Notifications",
-                        //         style: TextStyle(
-                        //           // fontSize: 28.0,
-                        //           // fontWeight: FontWeight.bold,
-                        //           color: Color(0xFFFFEFB7),
-                        //         ),
-                        //         textAlign: TextAlign.center,
-                        //       ),
-                        //       padding: const EdgeInsets.all(12),
-                        //     ),
-                        //   ),
-                        // ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Notifications()));
-                          },
-                          child: Container(
-                            width: 128,
-                            decoration: const BoxDecoration(
-                                color: Color(0xFF62417E),
-                                borderRadius: BorderRadius.only(
-                                    bottomRight: Radius.circular(12),
-                                    bottomLeft: Radius.circular(12))),
-                            child: Text(
-                              "Notifications",
-                              style: TextStyle(
-                                // fontSize: 28.0,
-                                // fontWeight: FontWeight.bold,
-                                color: Color(0xFFFFEFB7),
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
+                        ],
+                      ),
+                    )),
+                SizedBox(
+                  width: 7,
+                ),
+                Padding(
+                    padding: EdgeInsets.only(left: 5, right: 16, bottom: 16),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Color(0xFF62417E),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black,
+                            // spreadRadius: 1,
+                            blurRadius: 1.5,
+                            offset: Offset(0, 1.5),
+                          ),
+                          BoxShadow(
+                            color: Color(0xFF62417E),
+                            // spreadRadius: 1,
+                            //blurRadius: 5,
+                            offset: Offset(-2, 0),
+                          ),
+                          BoxShadow(
+                            color: Color(0xFF62417E),
+                            // spreadRadius: 1,
+                            //blurRadius: 5,
+                            offset: Offset(2, 0),
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            child: Icon(Icons.notifications_active,
+                                size: 30, color: Colors.white),
                             padding: const EdgeInsets.all(12),
                           ),
-                        )
-                      ],
-                    ),
-                  )),
-            ]),
-            Padding(
-                padding: const EdgeInsets.only(left: 5.0, right: 5.0),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      SingleChildScrollView(
-                        child: Container(
+                          // Material(
+                          //   color: Colors.transparent,
+                          //   child: InkResponse(
+                          //     onTap: () {
+                          //       Navigator.push(
+                          //           context,
+                          //           MaterialPageRoute(
+                          //               builder: (context) => Notifications()));
+                          //     },
+                          //     splashColor: Colors.blue,
+                          //     // highlightColor: Colors.transparent,
+                          //     child: Container(
+                          //       width: 120,
+                          //       decoration: const BoxDecoration(
+                          //           color: Color(0xFF62417E),
+                          //           borderRadius: BorderRadius.only(
+                          //               bottomRight: Radius.circular(12),
+                          //               bottomLeft: Radius.circular(12))),
+                          //       child: Text(
+                          //         "Notifications",
+                          //         style: TextStyle(
+                          //           // fontSize: 28.0,
+                          //           // fontWeight: FontWeight.bold,
+                          //           color: Color(0xFFFFEFB7),
+                          //         ),
+                          //         textAlign: TextAlign.center,
+                          //       ),
+                          //       padding: const EdgeInsets.all(12),
+                          //     ),
+                          //   ),
+                          // ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Notifications()));
+                            },
+                            child: Container(
+                              width: 128,
+                              decoration: const BoxDecoration(
+                                  color: Color(0xFF62417E),
+                                  borderRadius: BorderRadius.only(
+                                      bottomRight: Radius.circular(12),
+                                      bottomLeft: Radius.circular(12))),
+                              child: Text(
+                                "Notifications",
+                                style: TextStyle(
+                                  // fontSize: 28.0,
+                                  // fontWeight: FontWeight.bold,
+                                  color: Color(0xFFFFEFB7),
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                              padding: const EdgeInsets.all(12),
+                            ),
+                          )
+                        ],
+                      ),
+                    )),
+              ]),
+              Padding(
+                  padding: const EdgeInsets.only(left: 5.0, right: 5.0),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
                           width: double.infinity,
                           height: 520,
                           decoration: BoxDecoration(
@@ -302,13 +311,31 @@ class StartState extends State<News> {
                                                     ),
                                                   ),
                                                 ),
+                                                Container(
+                                                  margin: EdgeInsets.fromLTRB(
+                                                      4, 0, 0, 0),
+                                                  width: 18,
+                                                  height: 30,
+                                                  child: TextButton(
+                                                      onPressed: () {},
+                                                      style:
+                                                          TextButton.styleFrom(
+                                                        padding:
+                                                            EdgeInsets.zero,
+                                                      ),
+                                                      child: Icon(
+                                                        Icons.delete,
+                                                        size: 21,
+                                                        color:
+                                                            Color(0xFFC44747),
+                                                      )),
+                                                ),
                                               ],
                                             ),
                                           ),
                                         ),
                                       ),
                                       Container(
-                                        // news2Bfu (991:13293)
                                         margin:
                                             EdgeInsets.fromLTRB(0, 0, 0, 24),
                                         padding:
@@ -466,6 +493,35 @@ class StartState extends State<News> {
                                           ),
                                         ),
                                       ),
+                                      Padding(
+                                          padding: EdgeInsets.only(right: 6)),
+                                      // FloatingActionButton(
+                                      //     style: ElevatedButton.styleFrom(
+                                      //         primary: Colors.green,
+                                      //         shape: CircleBorder(),
+                                      //         padding: EdgeInsets.all(12)),
+                                      //     child: Icon(Icons.add, color: Colors.white),
+                                      //     onPressed: () {
+                                      //       // if (_formKey.currentState.validate()) {
+                                      //       //   _addCompras();
+                                      //       // }
+                                      //     }),
+
+                                      // Scaffold(
+                                      //   floatingActionButton: ElevatedButton(
+                                      //     style: ElevatedButton.styleFrom(
+                                      //       primary: Colors.green,
+                                      //       shape: CircleBorder(),
+                                      //       padding: EdgeInsets.all(12),
+                                      //       elevation: 8.0, // add some elevation to make it look like a floating action button
+                                      //     ),
+                                      //     child: Icon(Icons.add, color: Colors.white),
+                                      //     onPressed: () {
+                                      //       // do something when the button is pressed
+                                      //     },
+                                      //   ),
+                                      //   // add other widgets to the scaffold body
+                                      // ),
                                     ],
                                   ),
                                 ),
@@ -473,10 +529,22 @@ class StartState extends State<News> {
                             ],
                           ),
                         ),
-                      ),
-                    ])),
-          ],
+                      ])),
+            ],
+          ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    addNewNews()),
+          );
+        },
+        backgroundColor: Colors.white,
+        child: const Icon(Icons.add, color: Colors.black, size: 30),
       ),
     );
   }

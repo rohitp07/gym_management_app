@@ -37,11 +37,20 @@ class StartState extends State<Notifications> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Icon(
-                    Icons.arrow_back,
-                    size: 25,
-                    color: Color(0xFFC4C4C4),
-                  ),
+                  // Icon(
+                  //   Icons.arrow_back,
+                  //   size: 25,
+                  //   color: Color(0xFFC4C4C4),
+                  // ),
+                  IconButton(
+                      color: Color(0xFFC4C4C4),
+                      iconSize: 25,
+                      icon: const Icon(
+                        Icons.arrow_back,
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      }),
                   SizedBox(
                     width: 15,
                   ),
@@ -173,13 +182,13 @@ class StartState extends State<Notifications> {
                           Material(
                             color: Colors.transparent,
                             child: InkResponse(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Notifications()),
-                                );
-                              },
+                              // onTap: () {
+                              //   Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (context) => Notifications()),
+                              //   );
+                              // },
                               splashColor: Colors.blue,
                               highlightColor: Colors.blue.withOpacity(0.5),
                               child: SizedBox(
