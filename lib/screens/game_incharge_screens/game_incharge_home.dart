@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gym222/screens/game_incharge_screens/game_incharge_profile.dart';
 import 'package:gym222/screens/news.dart';
+import 'package:gym222/screens/news/newsmembers.dart';
 import 'package:gym222/screens/payment.dart';
 import 'package:gym222/screens/schedule_members.dart';
 
@@ -228,7 +229,7 @@ class StartState extends State<GameIncharge_home> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          News()),
+                                          NewsMembers()),
                                 );
                               },
                               child: Padding(

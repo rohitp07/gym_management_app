@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gym222/screens/coach_screens/coach_profile.dart';
 import 'package:gym222/screens/news.dart';
+import 'package:gym222/screens/news/newsmembers.dart';
 import 'package:gym222/screens/payment.dart';
 import 'package:gym222/screens/schedule_members.dart';
 
@@ -281,7 +282,7 @@ class StartState extends State<Coach_home> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => News()),
+                                      builder: (context) => NewsMembers()),
                                 );
                               },
                               child: Padding(

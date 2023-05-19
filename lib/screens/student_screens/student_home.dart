@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gym222/screens/news.dart';
+import 'package:gym222/screens/news/newsmembers.dart';
 import 'package:gym222/screens/payment.dart';
 import 'package:gym222/screens/schedule_members.dart';
 import 'package:gym222/screens/student_screens/student_profile.dart';
@@ -228,7 +229,7 @@ class StartState extends State<Student_home> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => News()),
+                                        builder: (context) => NewsMembers()),
                                   );
                                 },
                                 child: Padding(

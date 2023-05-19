@@ -33,7 +33,7 @@ class StartState extends State<News> {
       body:
           // SingleChildScrollView(
 
-          Container(
+        Container(
         child: Padding(
           padding: const EdgeInsets.only(left: 15.0, right: 15.0),
           child: Column(

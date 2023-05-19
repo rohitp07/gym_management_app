@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:gym222/screens/login_screen.dart';
 import 'package:gym222/screens/admin_screens/schedule_admin.dart';
 import 'package:gym222/screens/news.dart';
+import 'package:gym222/screens/news/newsadmin.dart';
 
 class admin_home extends StatefulWidget {
   String phone;
@@ -536,7 +537,7 @@ class _MyHomePageState extends State<admin_home> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          News()),
+                                          NewsAdmin()),
                                 );
                               },
                               child: Padding(
