@@ -242,7 +242,7 @@ class StartState extends State<NotificationsMembers> {
                     title: Text(docs[index]['Notification Heading'],
                         style: TextStyle(color: Color(0xFFFFEFB7))),
                     subtitle: Text(docs[index]['Notification Description'],
-                        style: TextStyle(color: Color(0xFFFFEFB7))),
+                        style: TextStyle(color: Color(0xFFFFFFFF))),
                   ),
                 );
               },

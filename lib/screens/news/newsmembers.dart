@@ -210,7 +210,8 @@ class StartState extends State<NewsMembers> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => NotificationsMembers()));
+                                    builder: (context) =>
+                                        NotificationsMembers()));
                           },
                           child: Container(
                             width: 128,
@@ -262,7 +263,7 @@ class StartState extends State<NewsMembers> {
                     title: Text(docs[index]['News Heading'],
                         style: TextStyle(color: Color(0xFFFFEFB7))),
                     subtitle: Text(docs[index]['News Description'],
-                        style: TextStyle(color: Color(0xFFFFEFB7))),
+                        style: TextStyle(color: Color(0xFFFFFFFF))),
                   ),
                 );
               },

@@ -209,7 +209,8 @@ class StartState extends State<NewsAdmin> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => NotificationsAdmin()));
+                                    builder: (context) =>
+                                        NotificationsAdmin()));
                           },
                           child: Container(
                             width: 128,
@@ -261,7 +262,7 @@ class StartState extends State<NewsAdmin> {
                     title: Text(docs[index]['News Heading'],
                         style: TextStyle(color: Color(0xFFFFEFB7))),
                     subtitle: Text(docs[index]['News Description'],
-                        style: TextStyle(color: Color(0xFFFFEFB7))),
+                        style: TextStyle(color: Color(0xFFFFFFFF))),
                   ),
                 );
               },

@@ -99,143 +99,143 @@ class _AddState extends State<Add> {
               ],
             ),
           ),
-          Container(
-            margin: EdgeInsets.fromLTRB(24, 0, 34, 40),
-            width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  // addimagesX7D (941:10247)
-                  margin: EdgeInsets.fromLTRB(0, 0, 0, 12),
-                  child: Text(
-                    'Add Images',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      height: 1.2,
-                      color: Color(0xfffffbeb),
-                    ),
-                  ),
-                ),
-                Container(
-                  // autogroupjhhhSjy (WnihSYxMi3g7q885TJjhHh)
-                  width: double.infinity,
-                  height: 100,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        // frame347yju (941:10248)
-                        margin: EdgeInsets.fromLTRB(0, 0, 22, 0),
-                        padding: EdgeInsets.fromLTRB(34, 20.83, 33, 18),
-                        height: double.infinity,
-                        decoration: BoxDecoration(
-                          color: Color(0xff63448a),
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              margin: EdgeInsets.fromLTRB(0, 0, 1, 8.83),
-                              width: 28.33,
-                              height: 28.33,
-                              child: Icon(
-                                Icons.add_photo_alternate_outlined,
-                                // Icons.edit_calendar_outlined,
-                                color: Color(0xffa4a4a4),
-                                size: 30,
-                              ),
-                            ),
-                            Center(
-                              child: Container(
-                                constraints: BoxConstraints(
-                                  maxWidth: 73,
-                                ),
-                                child: RichText(
-                                  textAlign: TextAlign.center,
-                                  text: TextSpan(
-                                    style: TextStyle(
-                                      fontSize: 8,
-                                      fontWeight: FontWeight.w400,
-                                      height: 1.5,
-                                      color: Color(0xffffffff),
-                                    ),
-                                    children: [
-                                      TextSpan(
-                                        text: 'Drop image here or\n',
-                                        style: TextStyle(
-                                          fontSize: 8,
-                                          fontWeight: FontWeight.w400,
-                                          height: 1.5,
-                                          color: Color(0xffa4a4a4),
-                                        ),
-                                      ),
-                                      TextSpan(
-                                        text: 'Browse image',
-                                        style: TextStyle(
-                                          fontSize: 8,
-                                          fontWeight: FontWeight.w400,
-                                          height: 1.5,
-                                          decoration: TextDecoration.underline,
-                                          color: Color(0xffffffff),
-                                          decorationColor: Color(0xffffffff),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        // frame348qp3 (941:10249)
-                        padding: EdgeInsets.fromLTRB(34, 18, 33, 24),
-                        height: double.infinity,
-                        decoration: BoxDecoration(
-                          color: Color(0xff63448a),
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              margin: EdgeInsets.fromLTRB(0, 0, 20, 12),
-                              width: 26,
-                              height: 31,
-                              child: Icon(
-                                Icons.add_circle_outline,
-                                color: Color(0xffa4a4a4),
-                                size: 40,
-                              ),
-                            ),
-                            Center(
-                              child: Text(
-                                'Add another image',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 8,
-                                  fontWeight: FontWeight.w400,
-                                  height: 1.5,
-                                  color: Color(0xffa4a4a4),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+          // Container(
+          //   margin: EdgeInsets.fromLTRB(24, 0, 34, 40),
+          //   width: double.infinity,
+          //   decoration: BoxDecoration(
+          //     borderRadius: BorderRadius.circular(4),
+          //   ),
+          //   child: Column(
+          //     crossAxisAlignment: CrossAxisAlignment.start,
+          //     children: [
+          //       Container(
+          //         // addimagesX7D (941:10247)
+          //         margin: EdgeInsets.fromLTRB(0, 0, 0, 12),
+          //         child: Text(
+          //           'Add Images',
+          //           style: TextStyle(
+          //             fontSize: 14,
+          //             fontWeight: FontWeight.w500,
+          //             height: 1.2,
+          //             color: Color(0xfffffbeb),
+          //           ),
+          //         ),
+          //       ),
+          //       Container(
+          //         // autogroupjhhhSjy (WnihSYxMi3g7q885TJjhHh)
+          //         width: double.infinity,
+          //         height: 100,
+          //         child: Row(
+          //           crossAxisAlignment: CrossAxisAlignment.center,
+          //           children: [
+          //             Container(
+          //               // frame347yju (941:10248)
+          //               margin: EdgeInsets.fromLTRB(0, 0, 22, 0),
+          //               padding: EdgeInsets.fromLTRB(34, 20.83, 33, 18),
+          //               height: double.infinity,
+          //               decoration: BoxDecoration(
+          //                 color: Color(0xff63448a),
+          //                 borderRadius: BorderRadius.circular(4),
+          //               ),
+          //               child: Column(
+          //                 crossAxisAlignment: CrossAxisAlignment.center,
+          //                 children: [
+          //                   Container(
+          //                     margin: EdgeInsets.fromLTRB(0, 0, 1, 8.83),
+          //                     width: 28.33,
+          //                     height: 28.33,
+          //                     child: Icon(
+          //                       Icons.add_photo_alternate_outlined,
+          //                       // Icons.edit_calendar_outlined,
+          //                       color: Color(0xffa4a4a4),
+          //                       size: 30,
+          //                     ),
+          //                   ),
+          //                   Center(
+          //                     child: Container(
+          //                       constraints: BoxConstraints(
+          //                         maxWidth: 73,
+          //                       ),
+          //                       child: RichText(
+          //                         textAlign: TextAlign.center,
+          //                         text: TextSpan(
+          //                           style: TextStyle(
+          //                             fontSize: 8,
+          //                             fontWeight: FontWeight.w400,
+          //                             height: 1.5,
+          //                             color: Color(0xffffffff),
+          //                           ),
+          //                           children: [
+          //                             TextSpan(
+          //                               text: 'Drop image here or\n',
+          //                               style: TextStyle(
+          //                                 fontSize: 8,
+          //                                 fontWeight: FontWeight.w400,
+          //                                 height: 1.5,
+          //                                 color: Color(0xffa4a4a4),
+          //                               ),
+          //                             ),
+          //                             TextSpan(
+          //                               text: 'Browse image',
+          //                               style: TextStyle(
+          //                                 fontSize: 8,
+          //                                 fontWeight: FontWeight.w400,
+          //                                 height: 1.5,
+          //                                 decoration: TextDecoration.underline,
+          //                                 color: Color(0xffffffff),
+          //                                 decorationColor: Color(0xffffffff),
+          //                               ),
+          //                             ),
+          //                           ],
+          //                         ),
+          //                       ),
+          //                     ),
+          //                   ),
+          //                 ],
+          //               ),
+          //             ),
+          //             Container(
+          //               // frame348qp3 (941:10249)
+          //               padding: EdgeInsets.fromLTRB(34, 18, 33, 24),
+          //               height: double.infinity,
+          //               decoration: BoxDecoration(
+          //                 color: Color(0xff63448a),
+          //                 borderRadius: BorderRadius.circular(4),
+          //               ),
+          //               child: Column(
+          //                 crossAxisAlignment: CrossAxisAlignment.center,
+          //                 children: [
+          //                   Container(
+          //                     margin: EdgeInsets.fromLTRB(0, 0, 20, 12),
+          //                     width: 26,
+          //                     height: 31,
+          //                     child: Icon(
+          //                       Icons.add_circle_outline,
+          //                       color: Color(0xffa4a4a4),
+          //                       size: 40,
+          //                     ),
+          //                   ),
+          //                   Center(
+          //                     child: Text(
+          //                       'Add another image',
+          //                       textAlign: TextAlign.center,
+          //                       style: TextStyle(
+          //                         fontSize: 8,
+          //                         fontWeight: FontWeight.w400,
+          //                         height: 1.5,
+          //                         color: Color(0xffa4a4a4),
+          //                       ),
+          //                     ),
+          //                   ),
+          //                 ],
+          //               ),
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
           Container(
             // group36802Nj (941:10242)
             margin: EdgeInsets.fromLTRB(24, 0, 24, 86),
@@ -314,7 +314,10 @@ class _AddState extends State<Add> {
                           },
                           child: Text(
                             "Save",
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: Color(0xff63448a)),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xFFF2CB41),
                           )),
                     ),
                   ),

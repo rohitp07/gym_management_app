@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
 import 'package:gym222/screens/plan_renewed.dart';
+import 'package:gym222/screens/razorpay.dart';
 
 class Renew_Plan extends StatefulWidget {
   @override
@@ -379,7 +380,7 @@ class _MyHomePageState extends State<Renew_Plan> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => Plan_Renewed()));
+                            builder: (context) => HomePage()));
                   },
                   // onPressed: () {},
                   style: TextButton.styleFrom(

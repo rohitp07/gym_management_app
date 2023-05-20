@@ -75,7 +75,10 @@ class _ViewState extends State<NewsView> {
               },
               child: Text(
                 "Save",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Color(0xff63448a)),
+              ),
+              style: ElevatedButton.styleFrom(
+                primary: Color(0xFFF2CB41),
               )),
         ),
       ),
